@@ -1,0 +1,64 @@
+<ul class="sidebar navbar-nav " style="background-color: #092138;">
+      <li class="nav-item ">
+        <a class="nav-link" href="admin.php">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="listCommandes.php">
+          <i class="fa fa-shopping-cart"></i>
+          <span>Commandes Produits </span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="admin.php" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-laptop"></i>
+          <span>Gestion Stock Shop</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="gProduits.php"><i class="fas fa-fw fa-plus-circle"></i>Ajouter Produit</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="listProduits.php"><i class="fas fa-fw fa-list"></i> Liste Produits</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="gApprov.php"><i class="fas fa-fw fa-plus"></i> G. Entrée Stock</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="gVente.php"><i class="fa fa-shopping-cart"></i> G. Sortie Stock</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="admin.php" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-laptop"></i>
+          <span>Gestion Stock Dépôt</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="gStockMaison.php"><i class="fas fa-fw fa-laptop"></i> Gestion Produits</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="gApprovStockMaison.php"><i class="fas fa-fw fa-plus-circle"></i> G. Entrée Stock</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="gTransfert.php"><i class="fa fa-car"></i> Tranférer vers Shop</a>
+        </div>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="gCategories.php">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Catégories Produits</span>
+        </a>
+      </li>
+      
+      
+      <li class="nav-item ">
+        <a class="nav-link" href="listClients.php">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Liste des clients</span>
+        </a>
+      </li>
+      
+      <li class="nav-item ">
+        <a class="nav-link" href="gEntreprise.php">
+          <i class="fas fa-fw fa-home"></i>
+          <span>Adresse Entreprise</span>
+        </a>
+      </li>
+      
+</ul>
