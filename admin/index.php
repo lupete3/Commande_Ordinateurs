@@ -46,11 +46,14 @@
                 <div class="card-body">
                   <div class="form-group">
                     <div class="form-row">
-                      <div class="col-md-12">
+                      <div class="col-md-12 text-center">
                       <!-- Affichage de la notification -->
-                          <div id="result">
-                            
-                          </div>
+                          <?php 
+                            if(isset($_GET['err'])){ ?>
+                                <div class=" text-center">
+                                    <p style="font-size: 22px;" class="text-danger"><?php echo $_GET['err'] ?></p>
+                                </div>
+                            <?php } ?>
                       </div>
                       <div class="col-md-12">
                         
