@@ -1443,6 +1443,75 @@
 			return $data;
 		  
 	  }
+	  
+	    //Méthode pour séléctionner toutes les données de la table produit coté admin
+	    public function getAllPublicites(){
+
+	    	$data = null;
+
+	      	$query = "SELECT * FROM publicite ";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute();
+
+	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	        	$data[] = $res;
+	      	}
+
+	      	return $data;
+	    }
+
+	    //Méthode pour séléctionner une donnée de la table publicité
+	    public function getPublicite($id){
+
+	    	$data = null;
+
+	      	$query = "SELECT * FROM publicite WHERE id = ?";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute(array($id));
+
+	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	        	$data[] = $res;
+	      	}
+
+	      	return $data;
+	    }
+		
+
+	    //Méthode pour modifier une publicite dans ala base de données
+	    public function editPublicite($designation,$detail,$newname,$id){
+
+	    	if (!empty($newname)) {
+	    		$query = "UPDATE publicite SET titre = ?,detail = ?,image = ? WHERE id = ?";
+	    		$sql = $this->conn->prepare($query);
+
+		        if ($sql->execute(array($designation,$detail,$newname,$id))) {          
+		        	return 1;
+
+		        }else {
+
+		        	return 2;
+		        }
+	    	}else{
+	    		$query = "UPDATE publicite SET titre = ?,detail = ? WHERE id = ?";
+	    		$sql = $this->conn->prepare($query);
+
+		        if ($sql->execute(array($designation,$detail,$id))) {          
+		        	return 1;
+
+		        }else {
+
+		        	return 2;
+		        }
+	    	}
+	    	
+		}
+
 
 	}
 

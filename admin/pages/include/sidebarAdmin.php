@@ -61,6 +61,13 @@
       </li>
       
       <li class="nav-item ">
+        <a class="nav-link" href="publicite.php">
+          <i class="fas fa-fw fa-id-card"></i>
+          <span>Publicité</span>
+        </a>
+      </li>
+      
+      <li class="nav-item ">
         <a class="nav-link" href="gEntreprise.php">
           <i class="fas fa-fw fa-home"></i>
           <span>Adresse Entreprise</span>
