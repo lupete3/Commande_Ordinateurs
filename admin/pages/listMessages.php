@@ -76,7 +76,7 @@
                     <td><?php echo $res['objet'] ?></td>
                     <td><?php echo $res['message'] ?></td>
                     <td><?php echo $res['date_pub'] ?></td>
-                    <td><button class="btn btn-sm btn-primary">Répondre</button></td>
+                    <td><a href="mailto:<?= $res['email'] ?>" class="btn btn-sm btn-success"><i class="fa fa-send"></i> Répondre</a> </td>
                   </tr>
                   <?php }
 

@@ -4,6 +4,13 @@
 
   require_once('include/header.php');
 
+  // Importation de la classe Model
+  include_once('admin/model/Model.php');
+
+  $model = new Model;
+
+  $all_categories = $model->getCategory();
+
 ?>
 
       <!-- Navbar End-->
@@ -76,75 +83,13 @@
           <h2 class="text-uppercase">Cette sélection est uniquement pour vous</h2>
               <p class="text-muted lead">Découvrez depuis chez vous une séléction des nos meilleurs produits choisis uniquement selon vos besoins, Consultez la section <b>SHOP </b>pour plus d'articles pertinents .</p>
               <div class="row products products-big">
-                <div class="col-lg-4 col-md-6">
-                  <div class="product">
-                    <div class="image"><a href="shop-detail.html"><img src="img/product1.jpg" alt="" class="img-fluid image1"></a></div>
-                    <div class="text">
-                      <h3 class="h5"><a href="shop-detail.html">Fur coat with very but very very long name</a></h3>
-                      <p class="price">$143.00</p>
-                    </div>
-                  </div>
+                <!-- Affichage de message d'erreur' -->
+                <div id="message"></div>
+                <!-- Affichages des 6 derniers articles publiés -->
+                <div id="data_product">
+                
                 </div>
-                <div class="col-lg-4 col-md-6">
-                  <div class="product">
-                    <div class="image"><a href="shop-detail.html"><img src="img/product2.jpg" alt="" class="img-fluid image1"></a></div>
-                    <div class="text">
-                      <h3 class="h5"><a href="shop-detail.html">White Blouse Armani</a></h3>
-                      <p class="price">
-                        <del>$280</del> $143.00
-                      </p>
-                    </div>
-                    <div class="ribbon-holder">
-                      <div class="ribbon sale">+Vendu</div>
-                      <div class="ribbon new">Nouveau</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <div class="product">
-                    <div class="image"><a href="shop-detail.html"><img src="img/product3.jpg" alt="" class="img-fluid image1"></a></div>
-                    <div class="text">
-                      <h3 class="h5"><a href="shop-detail.html">Black Blouse Versace</a></h3>
-                      <p class="price">$143.00</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <div class="product">
-                    <div class="image"><a href="shop-detail.html"><img src="img/product4.jpg" alt="" class="img-fluid image1"></a></div>
-                    <div class="text">
-                      <h3 class="h5"><a href="shop-detail.html">Black Blouse Versace</a></h3>
-                      <p class="price">$143.00</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <div class="product">
-                    <div class="image"><a href="shop-detail.html"><img src="img/product3.jpg" alt="" class="img-fluid image1"></a></div>
-                    <div class="text">
-                      <h3 class="h5"><a href="shop-detail.html">White Blouse Armani</a></h3>
-                      <p class="price">
-                        <del>$280</del> $143.00
-                      </p>
-                    </div>
-                    <div class="ribbon-holder">
-                      <div class="ribbon sale">SALE</div>
-                      <div class="ribbon new">NEW</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  <div class="product">
-                    <div class="image"><a href="shop-detail.html"><img src="img/product4.jpg" alt="" class="img-fluid image1"></a></div>
-                    <div class="text">
-                      <h3 class="h5"><a href="shop-detail.html">White Blouse Versace</a></h3>
-                      <p class="price">$143.00</p>
-                    </div>
-                    <div class="ribbon-holder">
-                      <div class="ribbon new">NEW</div>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
               
               <div class="pages">
@@ -350,7 +295,7 @@
     <!-- Javascript files-->
     <script>
       count_items_in_cart();
-
+      get_all_products();
       //Methode pour afficher le nombres des articles dans le panier
       function count_items_in_cart(){
         $.ajax({
@@ -363,6 +308,76 @@
           }
         });
       }
+
+      //Methode pour afficher tous les articles
+      function get_all_products(){
+        $.ajax({
+          url:'data_products.php',
+          type:'post',
+          data:{dataProduct:"data_products"},
+          success:function(response){
+            $("#data_product").html(response);
+            //$("#cart-panier").html(response);
+          }
+        });
+      }
+
+      //Ajout du produit dans le panier
+      $(document).ready(function(){
+        $(document).on("click",".addItemBtn", function(e){
+          e.preventDefault();
+
+          var $form = $(this).closest(".form-submit");
+          var id = $form.find(".id").val();
+          var designation = $form.find(".designation").val();
+          var prix = $form.find(".prix").val();
+          var image = $form.find(".image").val();
+
+          $.ajax({
+            url: 'action.php',
+            type: 'post',
+            data: {id:id,designation:designation,prix:prix,image:image,},
+            success: function(response){
+              $("#message").html(response);
+              window.scrollTo(0,0);
+              count_items_in_cart();
+            }
+          });     
+
+        });
+      });
+
+      $(document).on("click",".page-link", function(e){
+          e.preventDefault();
+
+        var id = $(this).attr("value");
+        var pageCourante = 0;
+        var articleparPage = 6;
+
+        if(id.length >= 0){
+           pageCourante = id;
+        }else{
+          pageCourante = 1;
+        }
+
+        if(id == 0){
+          var depart = 0;
+        }else{
+          var depart = (pageCourante - 1) * articleparPage;
+        }
+
+        $.ajax({
+          url:'data_products.php',
+          type:'get',
+          data:{depart:depart, pageCourante : articleparPage},
+          success:function(response){
+            $("#data_product").html(response);
+            window.scrollTo(-0,1);
+            //$("#cart-panier").html(response);
+          }
+        });
+
+      });
     </script>
   </body>
 </html>
