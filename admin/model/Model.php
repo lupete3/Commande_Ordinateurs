@@ -1402,6 +1402,47 @@
 	        }
 	    	
 		}
+		
+
+		//Méthode pour afficher tous les messages des clients
+	    public function getAllMessages(){
+
+	    	$data = null;
+
+	      	$query = "SELECT * FROM contact ORDER BY date_pub DESC";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute();
+
+	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	        	$data[] = $res;
+	      	}
+
+	      	return $data;
+	    	
+		}
+		
+		//Méthode pour afficher le nombre total messages recus
+	    public function getAllMessagesCount(){
+
+			$data = null;
+
+			$query = "SELECT count(*) as total FROM contact";
+
+			$sql = $this->conn->prepare($query);
+
+			$sql->execute();
+
+			while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+			  $data[] = $res;
+			}
+
+			return $data;
+		  
+	  }
 
 	}
 

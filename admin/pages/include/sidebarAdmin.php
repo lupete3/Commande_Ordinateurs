@@ -46,11 +46,17 @@
         </a>
       </li>
       
-      
       <li class="nav-item ">
         <a class="nav-link" href="listClients.php">
           <i class="fas fa-fw fa-users"></i>
           <span>Liste des clients</span>
+        </a>
+      </li>
+      
+      <li class="nav-item ">
+        <a class="nav-link" href="listMessages.php">
+          <i class="fas fa-fw fa-envelope"></i>
+          <span>Messages Clients</span>
         </a>
       </li>
       
