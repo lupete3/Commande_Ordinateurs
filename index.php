@@ -9,7 +9,7 @@
 
   $model = new Model;
 
-  $all_categories = $model->getCategory();
+  $all_publicite = $model->getAllPublicites();
 
 ?>
 
@@ -22,6 +22,18 @@
             <div class="dark-mask mask-primary"></div>
             <div class="container">
               <div class="homepage owl-carousel">
+              <?php if (!empty($all_publicite)) {
+                foreach ($all_publicite as $res): ?>
+                <div class="item">
+                  <div class="row">
+                    <div class="col-md-5 text-right">
+                      <h1><?= $res['titre'] ?></h1>
+                      <p><?= $res['detail'] ?></p>
+                    </div>
+                    <div class="col-md-7"><img src="img/<?= $res['image'] ?>" alt="" class="img-fluid"></div>
+                  </div>
+                </div>
+              <?php endforeach; }else { ?>
                 <div class="item">
                   <div class="row">
                     <div class="col-md-5 text-right">
@@ -31,7 +43,7 @@
                     </div>
                     <div class="col-md-7"><img src="img/template-homepage.png" alt="" class="img-fluid"></div>
                   </div>
-                </div>
+                </div>  
                 <div class="item">
                   <div class="row">
                     <div class="col-md-7 text-center"><img src="img/template-mac.png" alt="" class="img-fluid"></div>
@@ -71,7 +83,9 @@
                       </ul>
                     </div>
                   </div>
-                </div>
+                </div>    
+              <?php } ?>
+                
               </div>
             </div>
           </div>
