@@ -312,4 +312,35 @@
   }
 
 
+  //Ajout subscription aux newslater
+  if (isset($_POST['action']) && $_POST['action'] == 'add_newsletter') {
+    if (!empty($_POST['email'])) {
+      $email = $_POST['email'];
+
+      if ($add_data = $model->addSubscription($email)) {
+        echo '
+          <div class="alert alert-success alert-dismissible" id="msg" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h6>Merci d\'avoir souscrit</h6>
+          </div> ';
+        }else{
+          echo '
+            <div class="alert alert-danger alert-dismissible" id="msg" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h6>Une erreur est survenue</h6>
+            </div> ';
+        }
+
+    }else{
+    echo '
+        <div class="alert alert-danger alert-dismissible" id="msg" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h6>Compléter votre information</h6>
+        </div> <br>     
+        ';
+    }
+    
+  }
+
+
 ?>

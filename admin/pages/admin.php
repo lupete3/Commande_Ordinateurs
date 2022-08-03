@@ -23,11 +23,11 @@
   $req4->execute();
   $res4 = $req4->fetch();
 
-  $req5 = $bd->prepare("SELECT COUNT(*) AS nbEmail FROM email_box ");
+  $req5 = $bd->prepare("SELECT COUNT(*) AS nbEmail FROM contact ");
   $req5->execute();
   $res5 = $req5->fetch();
 
-  $req6 = $bd->prepare("SELECT COUNT(*) AS nbAbonne FROM subscribe ");
+  $req6 = $bd->prepare("SELECT COUNT(*) AS nbAbonne FROM subscriber ");
   $req6->execute();
   $res6 = $req6->fetch();
 

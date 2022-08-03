@@ -7,11 +7,12 @@
               <p>Meilleur entreprise qui vous fournis des produits de qualité dans la ville de Bukavu avec des offres spécialement pour vous</p>
               <hr>
               <h4 class="h6">Recevez nos Newsletter</h4>
-              <form>
+              <div id="message"></div>
+              <form class="form-news">
                 <div class="input-group">
-                  <input type="text" class="form-control">
+                  <input type="email" class="form-control email" required>
                   <div class="input-group-append">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-send"></i></button>
+                    <button type="button" class="btn btn-secondary addSub"><i class="fa fa-send"></i></button>
                   </div>
                 </div>
               </form>
@@ -86,3 +87,25 @@
     <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <script src="vendor/jquery.scrollto/jquery.scrollTo.min.js"></script>
     <script src="js/front.js"></script>
+    <script>
+      //Ajout souscription aux newslater
+      $(document).ready(function(){
+        $(".addSub").click(function(e){
+          e.preventDefault();
+
+          let $form = $(this).closest(".form-news");
+          let email = $form.find(".email").val();
+          let action = "add_newsletter"
+
+          $.ajax({
+            url: 'action.php',
+            type: 'post',
+            data: {email:email,action:action,},
+            success: function(response){
+              $("#message").html(response);
+            },
+          }); 
+
+        });
+      });
+    </script>

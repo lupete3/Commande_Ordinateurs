@@ -1442,7 +1442,7 @@
 
 			return $data;
 		  
-	  }
+	  	}
 	  
 	    //Méthode pour séléctionner toutes les données de la table produit coté admin
 	    public function getAllPublicites(){
@@ -1509,6 +1509,24 @@
 		        	return 2;
 		        }
 	    	}
+	    	
+		}
+
+		//Méthode pour ajouter une vente dans la table vente_admin dans ala base de données
+	    public function addSubscription($email){
+
+	    	$query = "INSERT INTO subscriber (email) VALUES (?)";
+
+	        $sql = $this->conn->prepare($query);
+
+	        if ($sql->execute(array($email))) {          
+
+	        	return 1;
+
+	        }else {
+
+	        	return 2;
+	        }
 	    	
 		}
 
