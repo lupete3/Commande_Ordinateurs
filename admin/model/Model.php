@@ -1632,6 +1632,50 @@
 			}
 	    	
 		}
+		
+
+	    //Méthode pour séléctionner toutes les données de la table blog
+	    public function getBlog($debut,$fin){
+
+	    	$data = null;
+
+	      	if (empty($debut) && empty($fin)) {
+				$query = "SELECT * FROM blog ORDER BY date_pub DESC ";
+			}else{
+				$query = "SELECT * FROM blog ORDER BY date_pub DESC LIMIT $debut,$fin";
+			}
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute();
+
+	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	        	$data[] = $res;
+	      	}
+
+	      	return $data;
+	    }
+		
+	    //Méthode pour supprimer un témoignage dans ala base de données
+	    public function deleteBlog($id){
+
+	    	$query = "DELETE FROM blog WHERE id = ?";
+
+	        $sql = $this->conn->prepare($query);
+
+	        if ($sql->execute(array($id))) {          
+
+	        	return 1;
+
+	        }else {
+
+	        	return 2;
+	        }
+	    	
+		}
+		
+		
 
 
 	}

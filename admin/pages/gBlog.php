@@ -4,7 +4,7 @@
 
   $model = new Model;
 
-  $list_temoignage = $model->getTemoignage();
+  $all_blog = $model->getBlog($debut='',$fin='');
   
 
  ?>
@@ -77,7 +77,7 @@
             <div class="card mb-3">
               <div class="card-header">
                 <i class="fas fa-table"></i>
-                Liste des témoignages <div class="float-right">     
+                Liste des articles publiés <div class="float-right">     
               </div>
             </div>
             <div class="card-body">
@@ -86,9 +86,8 @@
                   <thead>
                     <tr>
                       <th>Id</th>
-                      <th>Nom Client</th>
-                      <th>Fonction Client</th>
-                      <th>Message</th>
+                      <th>Titre</th>
+                      <th>Sous Titre</th>
                       <th>Date Publication</th>
                       <th>Image</th>
                       <th>Action</th>
@@ -111,9 +110,9 @@
       <script>
         
         //Fonction pour afficher les catégories
-        function getTemoignage(){
+        function getBlog(){
           $.ajax({
-            url : "listTemoignages.php",
+            url : "listBlog.php",
             type : "post",
             success : function(data){
               $("#data_list").html(data);
@@ -138,7 +137,7 @@
         }
 
         //Appel fonction qui affiche les témoignages seléctionnés
-        getTemoignage();
+        getBlog();
 
         //Enregistrement des données de la table témoignage
          $(document).on("click","#add_article", function(e){
@@ -171,7 +170,7 @@
               $("#img").attr("src",response); 
               $("#form")[0].reset();
               $("#previewImg").hide();
-              getTemoignage();
+              getBlog();
             },
           });    
         });
@@ -184,13 +183,13 @@
             var id = $(this).attr("value");
 
             $.ajax({
-              url:'delete_temoignage.php',
+              url:'delete_blog.php',
               type:'post',
               data:{
                 id:id,
               },
               success : function(data){
-                getTemoignage();
+                getBlog();
                 $("#result").html(data);
               }
             });

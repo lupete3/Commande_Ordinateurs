@@ -15,6 +15,9 @@
   //Appel des témoigages des clients 
   $all_temoigages = $model->getTemoignage();
 
+  //Appel des articles de blog 
+  $all_blog = $model->getBlog($debut = 0 ,$fin = 4);
+
 ?>
 
       <!-- Navbar End-->
@@ -165,54 +168,21 @@
           </div>
           <p class="lead">Découvrez les astuces et conseils proposés par nos experts sur l'installation et utilisation des nos produits pour une garantie optimale et faire durer le plus longtemps possible votre appareils </a></p>
           <div class="row">
+          <?php if (!empty($all_blog)) {
+            foreach ($all_blog as $res): ?>
             <div class="col-lg-3">
               <div class="home-blog-post">
-                <div class="image"><img src="img/portfolio-4.jpg" alt="..." class="img-fluid">
+                <div class="image"><img src="img/<?= $res['image']?>" alt="..." class="img-fluid">
                   <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
                 </div>
                 <div class="text">
-                  <h4><a href="#">Fashion Now </a></h4>
+                  <h4><a href="#"><?= $res['titre']?> </a></h4>
                   <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p>
-                  <p class="intro">Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
+                  <p class="intro"><?= $res['detail']?></p><a href="#" class="btn btn-template-outlined">Continuez la lecture</a>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3">
-              <div class="home-blog-post">
-                <div class="image"><img src="img/portfolio-3.jpg" alt="..." class="img-fluid">
-                  <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
-                </div>
-                <div class="text">
-                  <h4><a href="#">What to do</a></h4>
-                  <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p>
-                  <p class="intro">Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="home-blog-post">
-                <div class="image"><img src="img/portfolio-5.jpg" alt="..." class="img-fluid">
-                  <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
-                </div>
-                <div class="text">
-                  <h4><a href="#">5 ways to look awesome</a></h4>
-                  <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p>
-                  <p class="intro">Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="home-blog-post">
-                <div class="image"><img src="img/portfolio-6.jpg" alt="..." class="img-fluid">
-                  <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
-                </div>
-                <div class="text">
-                  <h4><a href="#">Fashion Now </a></h4>
-                  <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p>
-                  <p class="intro">Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
-                </div>
-              </div>
-            </div>
+            <?php endforeach; } ?>
           </div>
         </div>
       </section>
