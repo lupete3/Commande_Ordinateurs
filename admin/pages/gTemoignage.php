@@ -198,7 +198,7 @@
             var id = $(this).attr("value");
 
             $.ajax({
-              url:'delete_teloignage.php',
+              url:'delete_temoignage.php',
               type:'post',
               data:{
                 id:id,
