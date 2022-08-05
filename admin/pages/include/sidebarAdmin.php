@@ -59,6 +59,12 @@
           <span>Messages Clients</span>
         </a>
       </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="gTemoignage.php">
+          <i class="fas fa-fw fa-inbox"></i>
+          <span>Témoignages</span>
+        </a>
+      </li>
       
       <li class="nav-item ">
         <a class="nav-link" href="publicite.php">

@@ -1530,6 +1530,76 @@
 	    	
 		}
 
+	    //Méthode pour ajouter un témoignage dans la table témoignage dans la base de données 
+	    public function insertTemoignage($nom,$fonction,$message,$newname){
+
+	    	if (!empty($newname)) {
+				$query = "INSERT INTO temoignage (nom,fonction,message,image) VALUES (?,?,?,?)";
+
+				$sql = $this->conn->prepare($query);
+
+				if ($sql->execute(array($nom,$fonction,$message,$newname))) {          
+					return 1;
+
+				}else {
+
+					return 2;
+				}
+
+			}else{
+				$query = "INSERT INTO temoignage (nom,fonction,message,image) VALUES (?,?,?,?)";
+
+				$sql = $this->conn->prepare($query);
+
+				if ($sql->execute(array($nom,$fonction,$message,$newname='avatar.png'))) {          
+					return 1;
+
+				}else {
+
+					return 2;
+				}
+			}
+	    	
+		}
+
+	    //Méthode pour séléctionner toutes les données de la table témoignage
+	    public function getTemoignage(){
+
+	    	$data = null;
+
+	      	$query = "SELECT * FROM temoignage";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute();
+
+	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	        	$data[] = $res;
+	      	}
+
+	      	return $data;
+	    }
+		
+
+	    //Méthode pour supprimer un témoignage dans ala base de données
+	    public function deleteTemoignage($id){
+
+	    	$query = "DELETE FROM temoignage WHERE id = ?";
+
+	        $sql = $this->conn->prepare($query);
+
+	        if ($sql->execute(array($id))) {          
+
+	        	return 1;
+
+	        }else {
+
+	        	return 2;
+	        }
+	    	
+		}
+
 
 	}
 
