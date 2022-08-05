@@ -31,7 +31,7 @@
   $req6->execute();
   $res6 = $req6->fetch();
 
-  $req7 = $bd->prepare("SELECT COUNT(*) AS nbAgentsAffect FROM affectation WHERE observation = 'affecté' ");
+  $req7 = $bd->prepare("SELECT COUNT(*) AS nbTemoignage FROM temoignage ");
   $req7->execute();
   $res7 = $req7->fetch();
 
@@ -199,6 +199,44 @@
                 </div>
               </div>
               <a class="card-footer text-danger clearfix small z-10" href="#">
+                <h6 class="float-left"></h6>
+                <h6 class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </h6>
+              </a>
+            </div>
+          </div><br>
+          <div class="col-md-3 spacer" >
+            <div class="card border-primary o-hidden h-100">
+              <div class="card-body text-primary" style="margin-bottom: -30px;">
+                <div class="float-left">
+                  <i class="fas fa-fw fa-inbox" style="font-size: 55px;"></i>
+                </div>
+                <div class="float-right">
+                  <h3 style="font-size: 35px;"><?php echo $res7['nbTemoignage'] ?></h3>
+                <p class="float-right" style="font-weight: bold;">Témoignages</p>
+                </div>
+              </div>
+              <a class="card-footer text-primary clearfix small z-10" href="gTemoignage.php">
+                <h6 class="float-left"></h6>
+                <h6 class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </h6>
+              </a>
+            </div>
+          </div><br>
+          <div class="col-md-3 spacer" >
+            <div class="card border-primary o-hidden h-100">
+              <div class="card-body text-primary" style="margin-bottom: -30px;">
+                <div class="float-left">
+                  <i class="fas fa-fw fa-inbox" style="font-size: 55px;"></i>
+                </div>
+                <div class="float-right">
+                  <h3 style="font-size: 35px;"><?php echo $res7['nbTemoignage'] ?></h3>
+                <p class="float-right" style="font-weight: bold;">Articles Blog</p>
+                </div>
+              </div>
+              <a class="card-footer text-primary clearfix small z-10" href="gBlog.php">
                 <h6 class="float-left"></h6>
                 <h6 class="float-right">
                   <i class="fas fa-angle-right"></i>

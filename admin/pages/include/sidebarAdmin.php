@@ -47,6 +47,13 @@
       </li>
       
       <li class="nav-item ">
+        <a class="nav-link" href="gBlog.php">
+          <i class="fas fa-fw fa-rss"></i>
+          <span>Articles Blog</span>
+        </a>
+      </li>
+      
+      <li class="nav-item ">
         <a class="nav-link" href="listClients.php">
           <i class="fas fa-fw fa-users"></i>
           <span>Liste des clients</span>

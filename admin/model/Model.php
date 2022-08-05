@@ -1567,7 +1567,7 @@
 
 	    	$data = null;
 
-	      	$query = "SELECT * FROM temoignage";
+	      	$query = "SELECT * FROM temoignage ORDER BY date_pub DESC";
 
 	      	$sql = $this->conn->prepare($query);
 
@@ -1597,6 +1597,39 @@
 
 	        	return 2;
 	        }
+	    	
+		}
+		
+
+	    //Méthode pour ajouter un article dans la table blog dans la base de données 
+	    public function insertArticle($id,$titre,$detail,$description,$newname){
+
+	    	if (!empty($newname)) {
+				$query = "INSERT INTO blog (id_admin,titre,detail,description,image) VALUES (?,?,?,?,?)";
+
+				$sql = $this->conn->prepare($query);
+
+				if ($sql->execute(array($id,$titre,$detail,$description,$newname))) {          
+					return 1;
+
+				}else {
+
+					return 2;
+				}
+
+			}else{
+				$query = "INSERT INTO blog (id_admin,titre,detail,description,image) VALUES (?,?,?,?,?)";
+
+				$sql = $this->conn->prepare($query);
+
+				if ($sql->execute(array($id,$titre,$detail,$description,$newname='New_Center.jpg'))) {          
+					return 1;
+
+				}else {
+
+					return 2;
+				}
+			}
 	    	
 		}
 
