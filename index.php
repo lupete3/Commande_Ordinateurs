@@ -173,12 +173,12 @@
             <div class="col-lg-3">
               <div class="home-blog-post">
                 <div class="image"><img src="img/<?= $res['image']?>" alt="..." class="img-fluid">
-                  <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
+                  <div class="overlay d-flex align-items-center justify-content-center"><a href="blog_detail.php?a=<?= $res['id']?>" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
                 </div>
                 <div class="text">
-                  <h4><a href="#"><?= $res['titre']?> </a></h4>
-                  <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p>
-                  <p class="intro"><?= $res['detail']?></p><a href="#" class="btn btn-template-outlined">Continuez la lecture</a>
+                  <h4><a href="blog_detail.php?a=<?= $res['id']?>"><?= $res['titre']?> </a></h4>
+                  <p class="author-category">By <a href="blog_detail.php?a=<?= $res['id']?>">John Snow</a> in <a href="blog.html">Webdesign</a></p>
+                  <p class="intro"><?= $res['detail']?></p><a href="blog_detail.php?a=<?= $res['id']?>" class="btn btn-template-outlined">Continuez la lecture</a>
                 </div>
               </div>
             </div>
@@ -208,7 +208,7 @@
             <div class="col-lg-8 text-center p-3">
               <h3>Prêt à vous lancer ?</h3>
             </div>
-            <div class="col-lg-4 text-center p-3">   <a href="#" class="btn btn-template-outlined-white">Visiter notre shop maintenant</a></div>
+            <div class="col-lg-4 text-center p-3">   <a href="shop.php" class="btn btn-template-outlined-white">Visiter notre shop maintenant</a></div>
           </div>
         </div>
       </div>

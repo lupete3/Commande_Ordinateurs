@@ -1640,14 +1640,33 @@
 	    	$data = null;
 
 	      	if (empty($debut) && empty($fin)) {
-				$query = "SELECT * FROM blog ORDER BY date_pub DESC ";
+				$query = "SELECT blog.id, titre, detail, description, image, date_pub,nom_complet FROM blog, gerant  WHERE blog.id_admin = gerant.id ORDER BY date_pub DESC ";
 			}else{
-				$query = "SELECT * FROM blog ORDER BY date_pub DESC LIMIT $debut,$fin";
+				$query = "SELECT blog.id, titre, detail, description, image, date_pub,nom_complet FROM blog, gerant  WHERE blog.id_admin = gerant.id ORDER BY date_pub DESC LIMIT $debut,$fin";
 			}
 
 	      	$sql = $this->conn->prepare($query);
 
 	      	$sql->execute();
+
+	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	        	$data[] = $res;
+	      	}
+
+	      	return $data;
+	    }
+		
+	    //Méthode pour séléctionner une seule donnée de la table blog
+	    public function getBlogSingle($id){
+
+	    	$data = null;
+
+	      	$query = "SELECT blog.id, titre, detail, description, image, date_pub,nom_complet FROM blog, gerant  WHERE blog.id_admin = gerant.id AND blog.id = ? ";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute(array($id));
 
 	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
 
