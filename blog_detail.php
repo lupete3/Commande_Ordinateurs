@@ -110,3 +110,18 @@ if (empty($_GET['a'])) {
     
   </body>
 </html>
+<script>
+    count_items_in_cart();
+      //Methode pour afficher le nombres des articles dans le panier
+      function count_items_in_cart(){
+        $.ajax({
+          url:'action.php',
+          type:'get',
+          data:{cartItem:"cart_item"},
+          success:function(response){
+            $(".cart-item").html(response);
+            $("#cart-panier").html(response);
+          }
+        });
+      }
+</script>

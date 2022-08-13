@@ -128,7 +128,6 @@
                 <li class="nav-item <?php echo $index ?> "><a href="index.php" class="">Accueil <b class="caret"></b></a></li>
                 <li class="nav-item <?php echo $shop ?>"><a href="shop.php" class="">Shop </a></li>
                 <li class="nav-item <?php echo $blog ?>"><a href="blog.php" class="">Blog </a></li>
-                <li class="nav-item <?php echo $about ?>"><a href="about.php" class="">A propos de nous </a></li>
                 <li class="nav-item <?php echo $contact ?>"><a href="contact.php" class="">Contact </a></li>
 
                 

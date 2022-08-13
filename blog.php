@@ -66,3 +66,18 @@ $all_blog = $model->getBlog($debut = 0, $fin = 100);
     
   </body>
 </html>
+<script>
+    count_items_in_cart();
+      //Methode pour afficher le nombres des articles dans le panier
+      function count_items_in_cart(){
+        $.ajax({
+          url:'action.php',
+          type:'get',
+          data:{cartItem:"cart_item"},
+          success:function(response){
+            $(".cart-item").html(response);
+            $("#cart-panier").html(response);
+          }
+        });
+      }
+</script>
