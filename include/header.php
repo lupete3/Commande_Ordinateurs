@@ -129,7 +129,6 @@
                 <li class="nav-item <?php echo $shop ?>"><a href="shop.php" class="">Shop </a></li>
                 <li class="nav-item <?php echo $blog ?>"><a href="blog.php" class="">Blog </a></li>
                 <li class="nav-item <?php echo $contact ?>"><a href="contact.php" class="">Contact </a></li>
-
                 
                 <!-- ========== Contact dropdown end ==================-->
               </ul>

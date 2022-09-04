@@ -16,8 +16,12 @@
         <td><?php echo $res['quantite'] ?></td>
         <td><?php echo number_format(($res['prix'] * $res['quantite']),2) ?> $</td>
         <td><?php echo $res['date_vente'] ?></td>
+        <td><?php echo $res['client'] ?></td>
         <td>
-          <a href="" id="deleteBtn" value="<?php echo $res['id'] ?>" class="btn btn-danger btn-sm " title=""><i class="fa fa-trash"></i></a>
+          <div class="btn-group">
+            <a href="" id="deleteBtn" value="<?php echo $res['id'] ?>" class="btn btn-danger  btn-sm " title=""><i class="fa fa-trash"></i></a>
+          <a href="facture.php?id=<?php echo $res['id'] ?>" id="imprimBtn" value="" class="btn btn-primary btn-sm " title=""><i class="fa fa-print"></i></a>
+          </div>
         </td>
       </tr>
     <?php  

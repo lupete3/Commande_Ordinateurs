@@ -1,4 +1,4 @@
-<div class="col-md-3 mt-4 mt-md-0">
+<div class="col-md-3 mt-4 mt-md-0 cache">
   <!-- CUSTOMER MENU -->
   <div class="panel panel-default sidebar-menu">
     <div class="panel-heading">

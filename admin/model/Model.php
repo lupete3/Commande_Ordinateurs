@@ -46,6 +46,21 @@
 
 	    }
 
+	    //Methode pour tester si la catégorie n'existe pas encore dans le système
+	    public function userExists($nom){
+
+	    	$query = "SELECT * FROM gerant WHERE nom_complet = ? ";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$req = $sql->execute(array($nom));
+
+	      	$res = $sql->fetch(PDO::FETCH_ASSOC);
+
+	      	return $res;
+
+	    }
+
 	    //Méthode pour séléctionner toutes les onnées de la table categorie
 	    public function getCategory(){
 
@@ -65,12 +80,50 @@
 	      	return $data;
 	    }
 
+	    //Méthode pour séléctionner toutes les onnées de la table categorie
+	    public function getUsers(){
+
+	    	$data = null;
+
+	      	$query = "SELECT * FROM gerant";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute();
+
+	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	        	$data[] = $res;
+	      	}
+
+	      	return $data;
+	    }
+
 	    //Méthode pour séléctionner une seule donnée de la table categorie
 	    public function getCategorySingle($id){
 
 	    	$data = null;
 
 	      	$query = "SELECT * FROM categorie WHERE id = ?";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute(array($id));
+
+	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	        	$data[] = $res;
+	      	}
+
+	      	return $data;
+	    }
+
+	    //Méthode pour séléctionner une seule donnée de la table categorie
+	    public function getUserSingle($id){
+
+	    	$data = null;
+
+	      	$query = "SELECT * FROM gerant WHERE id = ?";
 
 	      	$sql = $this->conn->prepare($query);
 
@@ -113,6 +166,24 @@
 	      	$sql = $this->conn->prepare($query);
 
 	      	$sql->execute();
+
+	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	        	$data[] = $res;
+	      	}
+
+	      	return $data;
+	    }
+	    //Méthode pour séléctionner toutes les données de la table produit coté admin
+	    public function getAllProductAdminTri($cat){
+
+	    	$data = null;
+
+	      	$query = "SELECT produit.id, designation,libelle,prix,quantite,disponible,description,image,date_ajout FROM produit, categorie WHERE id_cat = categorie.id AND categorie.id = ? ORDER BY date_ajout DESC ";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute(array($cat));
 
 	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
 
@@ -222,12 +293,48 @@
 
 	      	return $data;
 	    }
-	    //Méthode pour séléctionner toutes les données de la table vente_admin
-	    public function getVentesAdmin(){
+	    //Méthode pour séléctionner toutes les données de la table categorie
+	    public function getApprovSearch($debut,$fin){
 
 	    	$data = null;
 
-	      	$query = "SELECT vente_admin.id, designation,vente_admin.prix,vente_admin.quantite,date_vente,id_prod FROM produit, vente_admin WHERE id_prod = produit.id ";
+	      	$query = "SELECT approv.id, designation,approv.prix,approv.quantite,date_approv,nom_four,id_prod FROM produit, approv WHERE id_prod = produit.id AND date_approv BETWEEN ? AND ?";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute(array($debut,$fin));
+
+	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	        	$data[] = $res;
+	      	}
+
+	      	return $data;
+	    }
+	    //Méthode pour séléctionner toutes les données de la table vente_admin
+	    public function getVentesAdminSearch($debut,$fin){
+
+	    	$data = null;
+
+	      	$query = "SELECT vente_admin.id, designation,vente_admin.prix,vente_admin.quantite,date_vente,id_prod,client FROM produit, vente_admin WHERE id_prod = produit.id AND date_vente BETWEEN ? AND ? ";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute(array($debut,$fin));
+
+	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	        	$data[] = $res;
+	      	}
+
+	      	return $data;
+	    }
+
+	     public function getVentesAdmin(){
+
+	    	$data = null;
+
+	      	$query = "SELECT vente_admin.id, designation,vente_admin.prix,vente_admin.quantite,date_vente,id_prod,client FROM produit, vente_admin WHERE id_prod = produit.id ";
 
 	      	$sql = $this->conn->prepare($query);
 
@@ -265,7 +372,7 @@
 
 	    	$data = null;
 
-	      	$query = "SELECT vente_admin.id, designation,vente_admin.prix,vente_admin.quantite,date_vente,id_prod FROM produit, vente_admin WHERE id_prod = produit.id AND vente_admin.id = ?";
+	      	$query = "SELECT vente_admin.id, designation,vente_admin.prix,vente_admin.quantite,date_vente,id_prod,client FROM produit, vente_admin WHERE id_prod = produit.id AND vente_admin.id = ?";
 
 	      	$sql = $this->conn->prepare($query);
 
@@ -362,6 +469,24 @@
 	    	
 		}
 
+	    //Méthode pour ajouter une catégorie dans ala base de données
+	    public function insertUser($nom,$email,$telephone,$login,$password,$type){
+
+	    	$query = "INSERT INTO gerant (nom_complet,email,telephone,login,password,type) VALUES (?,?,?,?,?,?)";
+
+	        $sql = $this->conn->prepare($query);
+
+	        if ($sql->execute(array($nom,$email,$telephone,$login,$password,$type))) {          
+
+	        	return 1;
+
+	        }else {
+
+	        	return 2;
+	        }
+	    	
+		}
+
 	    //Méthode pour modifier une catégorie dans ala base de données
 	    public function editCategorie($designation,$detail,$id){
 
@@ -379,11 +504,46 @@
 	        }
 	    	
 		}
+	    //Méthode pour modifier une catégorie dans ala base de données
+	    public function editUser($nom,$email,$telephone,$login,$password,$id){
+
+	    	$query = "UPDATE gerant SET nom_complet = ?,email = ?,telephone = ?, login = ?, password = ? WHERE id = ?";
+
+	        $sql = $this->conn->prepare($query);
+
+	        if ($sql->execute(array($nom,$email,$telephone,$login,$password,$id))) {          
+
+	        	return 1;
+
+	        }else {
+
+	        	return 2;
+	        }
+	    	
+		}
 
 	    //Méthode pour supprimer une catégorie dans ala base de données
 	    public function deleteCategorie($id){
 
 	    	$query = "DELETE FROM categorie WHERE id = ?";
+
+	        $sql = $this->conn->prepare($query);
+
+	        if ($sql->execute(array($id))) {          
+
+	        	return 1;
+
+	        }else {
+
+	        	return 2;
+	        }
+	    	
+		}
+
+	    //Méthode pour supprimer une catégorie dans ala base de données
+	    public function deleteUser($id){
+
+	    	$query = "DELETE FROM gerant WHERE id = ?";
 
 	        $sql = $this->conn->prepare($query);
 
@@ -417,13 +577,13 @@
 		}
 
 		//Méthode pour ajouter une vente dans la table vente_admin dans ala base de données
-	    public function insertVente($qte,$prix,$date,$produit){
+	    public function insertVente($qte,$prix,$date,$produit,$client){
 
-	    	$query = "INSERT INTO vente_admin (quantite,prix,date_vente,id_prod	) VALUES (?,?,?,?)";
+	    	$query = "INSERT INTO vente_admin (quantite,prix,date_vente,id_prod,client	) VALUES (?,?,?,?,?)";
 
 	        $sql = $this->conn->prepare($query);
 
-	        if ($sql->execute(array($qte,$prix,$date,$produit))) {          
+	        if ($sql->execute(array($qte,$prix,$date,$produit,$client))) {          
 
 	        	return 1;
 
@@ -1258,6 +1418,25 @@
 	      	return $data;
 	    }
 
+	    //Méthode pour séléctionner toutes les données de la table categorie
+	    public function getApprovProdMaisonSearch($debut,$fin){
+
+	    	$data = null;
+
+	      	$query = "SELECT entree_stock_maison.id, libelle,entree_stock_maison.prix_achat,entree_stock_maison.qte,entree_stock_maison.date_entree,fournisseur,id_produit FROM stock_maison, entree_stock_maison WHERE id_produit = stock_maison.id AND entree_stock_maison.date_entree BETWEEN ? AND ? ";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute(array($debut,$fin));
+
+	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	        	$data[] = $res;
+	      	}
+
+	      	return $data;
+	    }
+
 
 	    //Méthode pour séléctionner une donnée de la table approvisionnement
 	    public function getApprovProdMaisonSingle($id){
@@ -1288,6 +1467,25 @@
 	      	$sql = $this->conn->prepare($query);
 
 	      	$sql->execute();
+
+	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	        	$data[] = $res;
+	      	}
+
+	      	return $data;
+	    }
+
+	    //Méthode pour séléctionner toutes les données de la table vente_admin
+	    public function getTransfertsAllSearch($debut,$fin){
+
+	    	$data = null;
+
+	      	$query = "SELECT sortie_stock_maison.id,qte,date_sortie,id_produit,libelle FROM sortie_stock_maison, stock_maison WHERE id_produit = stock_maison.id AND date_sortie BETWEEN ? AND ?";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute(array($debut,$fin));
 
 	      	while($res = $sql->fetch(PDO::FETCH_ASSOC)){
 

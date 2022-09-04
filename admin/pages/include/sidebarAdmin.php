@@ -45,6 +45,17 @@
           <span>Catégories Produits</span>
         </a>
       </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="admin.php" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Gestion utilisateurs</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="gAgents.php"><i class="fas fa-fw fa-plus-circle"></i>Gérer Utilisateurs</a>
+        </div>
+      </li>
+
       
       <li class="nav-item ">
         <a class="nav-link" href="gBlog.php">

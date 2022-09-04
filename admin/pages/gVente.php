@@ -42,6 +42,7 @@
                       </div>
                       </div>
                       <div class="col-md-12">
+                        <input type="text" id="client" name="client" class="form-control" placeholder="Nom Client"  autocomplete="off"><br>
                         <select name="produit" id="produit" class="form-control">
                           <option value="" selected="">Choisir un produit</option>
                             <?php 
@@ -68,7 +69,7 @@
             <div class="card mb-3">
               <div class="card-header">
                 <i class="fas fa-table"></i>
-                Historique Ventes <div class="float-right">     
+                Historique Ventes <div class="float-right"><a href="imprimVenteShop.php" class="btn btn-primary "><i class="fa fa-check-print"></i> Imprimer</a>    
               </div>
             </div>
             <div class="card-body">
@@ -79,9 +80,10 @@
                       <th>Id</th>
                       <th>Designation</th>
                       <th>Prix Achat</th>
-                      <th>Quantité Achetée</th>
+                      <th>Qte Achetée</th>
                       <th>Prix Total</th>
                       <th>Date Vente</th>
+                      <th>Client</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -150,6 +152,7 @@
           var produit = $("#produit").val();
           var qte = $("#qte").val();
           var prix = $("#prix").val();
+          var client = $("#client").val();
 
           var add_vente = $("#add_vente").val();
         
@@ -160,6 +163,7 @@
               produit:produit,
               qte:qte,
               prix:prix,
+              client:client,
             },
             success: function(response){
               getVentes();

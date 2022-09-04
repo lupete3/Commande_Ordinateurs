@@ -13,8 +13,9 @@
         $produit = $_POST['produit'];
         $qte = $_POST['qte'];
         $prix = $_POST['prix'];
+        $client = $_POST['client'];
 
-        if ($add_data = $model->insertVente($qte,$prix,$date,$produit)) {
+        if ($add_data = $model->insertVente($qte,$prix,$date,$produit,$client)) {
 
           $uptdate_data = $model->updateQte($produit,$qte,$action='sous');
                 

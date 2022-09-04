@@ -69,7 +69,7 @@
             <div class="card mb-3">
               <div class="card-header">
                 <i class="fas fa-table"></i>
-                Historique Approvisionement <div class="float-right">     
+                Historique Approvisionement <div class="float-right"><a href="imprimEntreeShop.php" class="btn btn-primary "><i class="fa fa-check-print"></i> Imprimer</a>     
               </div>
             </div>
             <div class="card-body">

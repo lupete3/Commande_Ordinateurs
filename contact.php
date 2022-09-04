@@ -2,7 +2,12 @@
 
 $contact = 'active';
 
+// Importation de la classe Model
+include_once('admin/model/Model.php');
+
 require_once('include/header.php');
+
+$model = new Model;
 
 ?>
       <!-- Navbar End-->

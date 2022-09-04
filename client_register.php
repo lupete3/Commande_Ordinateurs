@@ -1,4 +1,9 @@
-<?php require_once('include/header.php'); ?>   
+<?php // Importation de la classe Model
+include_once('admin/model/Model.php');
+
+require_once('include/header.php');
+
+$model = new Model; ?>   
       <div id="heading-breadcrumbs">
         <div class="container">
           <div class="row d-flex align-items-center flex-wrap">
@@ -99,19 +104,21 @@
       
       $(document).ready(function(){
 
-        count_items_in_cart()
+        
+      count_items_in_cart();
 
-        //Methode pour afficher le nombres des articles dans le panier
-        function count_items_in_cart(){
-          $.ajax({
-            url:'action.php',
-            type:'get',
-            data:{cartItem:"cart_item"},
-            success:function(response){
-              $(".cart-item").html(response);
-            }
-          });
-        }
+      //Methode pour afficher le nombres des articles dans le panier
+      function count_items_in_cart(){
+        $.ajax({
+          url:'action.php',
+          type:'get',
+          data:{cartItem:"cart_item"},
+          success:function(response){
+            $(".cart-item").html(response);
+            $("#cart-panier").html(response);
+          }
+        });
+      }
 
         //Enregistrement utilisateur
         $("#btnAddCli").click(function(e){

@@ -31,7 +31,7 @@
        
         <!-- DataTables Example -->
             <div class="card ">
-              <div class="card-header text-uppercase">Approvisionnement Stock Maison</div>
+              <div class="card-header text-uppercase">Approvisionnement Stock Maison  </div>
                 <div class="card-body">
                   <div class="form-group">
                     <div class="form-row">
@@ -69,7 +69,8 @@
             <div class="card mb-3">
               <div class="card-header">
                 <i class="fas fa-table"></i>
-                Historique Entrée Stock Dépôt <div class="float-right">     
+                Historique Entrée Stock Dépôt <div class="float-right">
+                <a href="imprimEntreeMaison.php" class="btn btn-primary" title=""><i class="fa fa-print"></i> Imprimer</a>
               </div>
             </div>
             <div class="card-body">

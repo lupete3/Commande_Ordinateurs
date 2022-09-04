@@ -67,7 +67,7 @@
 
                         <div class='preview'>
                           <label for=""><b>Logo</b></label>
-                          <img src="../../img/<?= $logo?>" id="previewImg" width="100" height="100">
+                          <img src="../../img/<?= $logo?>" id="previewImg" width="50" height="50">
 
                         </div>
 

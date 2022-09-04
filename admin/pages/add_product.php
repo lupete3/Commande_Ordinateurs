@@ -5,9 +5,7 @@
   //Appel de la classe Model
   $model = new Model;
 
-  if (isset($_POST['designation']) && isset($_POST['prix']) && isset($_POST['qte']) && isset($_POST['categorie'])&& isset($_POST['disponible']) && isset($_FILES['file']['name'])){
-
-    if (!empty($_POST['designation']) && !empty($_POST['prix']) && !empty($_POST['qte']) && !empty($_POST['categorie'])&& !empty($_POST['disponible'])&& !empty($_POST['detail']) && !empty($_FILES['file']['name'])) {
+  if (isset($_POST['designation']) && isset($_POST['prix']) && isset($_POST['qte']) && isset($_POST['categorie'])&& isset($_POST['disponible']) ){
 
         $designation = $_POST['designation'];
         $prix = $_POST['prix'];
@@ -72,15 +70,7 @@
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h6>Choisissez un bon format de la photo</h6>
             </div> ';
-        }  
-    }else{
-
-      echo '
-        <div class="alert alert-danger alert-dismissible" id="msg" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h6>Completer tous les champs</h6>
-        </div> ';
-    }
+        } 
   }else{
 
     echo '
