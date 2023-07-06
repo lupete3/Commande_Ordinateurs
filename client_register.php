@@ -12,7 +12,7 @@ $model = new Model; ?>
             </div>
             <div class="col-md-5">
               <ul class="breadcrumb d-flex justify-content-end">
-                <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="index">Accueil</a></li>
                 <li class="breadcrumb-item active">Nouveau compte / Se connecter</li>
               </ul>
             </div>
@@ -88,7 +88,7 @@ $model = new Model; ?>
                     <input id="password-login" name="password" type="password" class="form-control passwordLog">
                   </div>
                   <div class="text-center">
-                    <button type="button" id="btnLogCli" class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Connexion</button>
+                    <button type="submit" id="btnLogCli" class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Connexion</button>
                   </div>
                 </form>
               </div>
@@ -170,7 +170,7 @@ $model = new Model; ?>
             data: {action:action,telephone:telephone,password:password,},
             success: function(response, textStatus){
               if(response == "success"){
-                window.location.href = 'shop.php';
+                window.location.href = 'shop';
               }else{
                 $("#messageLog").html(response);
                 window.scrollTo(0,0);

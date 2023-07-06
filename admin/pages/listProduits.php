@@ -13,7 +13,13 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php include('include/sidebarAdmin.php'); ?>
+    <?php 
+      if ($type_user != 'Admin') {
+        include('include/sidebarGerant.php');
+      }else{
+        include('include/sidebarAdmin.php');;
+      }
+    ?>
 
     <div id="content-wrapper" class="container-fluid">
 
@@ -26,7 +32,13 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="admin.php">Tableau de bord</a>
+            <?php 
+              if ($type_user != 'Admin') {
+                echo '<a href="gerant.php">Tableau de Bord</a>';
+              }else{
+                echo '<a href="admin.php">Tableau de Bord</a>';
+              }
+            ?>
           </li>
           <li class="breadcrumb-item active">Liste des Produits</li>
         </ol>
@@ -41,6 +53,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
+              <span id="tot"></span>
               <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
@@ -52,7 +65,14 @@
                     <th>Disponible</th>
                     <th>Image</th>
                     <th>Description de l'article</th>
-                    <th>Action</th>
+                    
+                    <?php 
+                      if ($type_user != 'Admin') {
+                        # code...
+                      }else{
+                        echo "<th>Action</th>";
+                      }
+                     ?>
                   </tr>
                 </thead>
                 
@@ -68,17 +88,23 @@
                     <td><?php echo $res['designation'] ?></td>
                     <td><?php echo $res['libelle'] ?></td>
                     <td><?php echo number_format($res['prix'],2) ?> $</td>
-                    <td><?php echo $res['quantite'] ?></td>
+                    <td class="qte"><?php echo $res['quantite'] ?></td>
                     <td><?php echo $res['disponible'] ?></td>
                     <td><img src="../../img/<?php echo $res['image'] ?>" height="30" border="4" alt="">
                       <input type="hidden" id="path" value="<?php echo $res['image'] ?>" name="">
                      </td>
                     <td><?php echo $res['description'] ?></td>
-                    <td>
-                    <a href="show_product.php?idAr=<?php echo $res['id'] ?>" title=""><button type="button" class="btn btn-sm btn-primary "><i class="fa fa-edit"></i> Modifier</button></a>
-                    <a href="" title=""><button type="button" value="<?php echo $res['id'] ?>" class="btn btn-sm btn-danger " id="supBtn"><i class="fa fa-trash"></i> Supprimer</button></a>
-                   
-                  </td>
+                    <?php 
+                      if ($type_user != 'Admin') {
+                        # code...
+                      }else{  ?>
+                        <td>
+                          <a href="show_product.php?idAr=<?php echo $res['id'] ?>" title=""><button type="button" class="btn btn-sm btn-primary "><i class="fa fa-edit"></i> </button></a><a href="" title=""><button type="button" value="<?php echo $res['id'] ?>" class="btn btn-sm btn-danger " id="supBtn"><i class="fa fa-trash"></i> </button></a>
+                        </td>
+                    <?php 
+                      }
+                     ?>
+                    
                   </tr>
                   <?php }
 
@@ -120,8 +146,31 @@
 
 
   <script type="text/javascript">
+
+    $(document).ready(function(){
+
+          $('tr').each(function(){
+            
+          let qte = 0;
+          let trCount = $('tr').length;
+          for (var i = 1; i < trCount; i++) {
+            let tdText = 
+            $("tr:eq("+i+") td:eq(4)").text();
+            qte += Number(tdText);
+          }
+          $('#tot').text(qte).text(qte);
+          });
+    });
+
+
+
+
+
+
     $(document).on("click","#supBtn", function(e){
           e.preventDefault();
+
+
 
           if(window.confirm("Voulez-vous masquer cet article ?")){
             var id = $(this).attr("value");

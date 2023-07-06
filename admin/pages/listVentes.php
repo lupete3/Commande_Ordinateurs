@@ -1,4 +1,5 @@
 <?php 
+ require_once('../model/security_adm.php'); 
 
   require_once '../model/Model.php';
 
@@ -19,8 +20,15 @@
         <td><?php echo $res['client'] ?></td>
         <td>
           <div class="btn-group">
-            <a href="" id="deleteBtn" value="<?php echo $res['id'] ?>" class="btn btn-danger  btn-sm " title=""><i class="fa fa-trash"></i></a>
-          <a href="facture.php?id=<?php echo $res['id'] ?>" id="imprimBtn" value="" class="btn btn-primary btn-sm " title=""><i class="fa fa-print"></i></a>
+         <?php if($type_user != 'Admin') { ?>
+             <a href="facture.php?id=<?php echo $res['id'] ?>" id="imprimBtn" value="" class="btn btn-primary btn-sm " title=""><i class="fa fa-print"></i></a>
+        <?php }else{  ?>
+              <a href="" id="deleteBtn" value="<?php echo $res['id'] ?>" class="btn btn-danger  btn-sm " title=""><i class="fa fa-trash"></i></a>
+              <a href="facture.php?id=<?php echo $res['id'] ?>" id="imprimBtn" value="" class="btn btn-primary btn-sm " title=""><i class="fa fa-print"></i></a>
+          <?php 
+              }
+          ?>
+        
           </div>
         </td>
       </tr>

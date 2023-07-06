@@ -6,17 +6,18 @@
 
   // Importation de la classe Model
   include_once('admin/model/Model.php');
+  include_once('panier.php');
 
   $model = new Model;
-  $all_product_items = $model->getAllProductInCart();
+  $all_product_items = obtenirContenuPanier();
 
   $prix_tot = 0;
   $allItems = '';
   $items = array();
 
-  foreach ($all_product_items as $res) {
-    $prix_tot += $res['prix_tot'];
-    $items[] = $res['qteItems'];
+  foreach ($all_product_items as $index => $res) {
+    $prix_tot += $res['tot'];
+    $items[] = $res['designation'].'('.$res['qte'].')';
   }
 
   $allItems = implode(', ', $items);
@@ -29,7 +30,7 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-lg-6 px-4 pb-2 text-center mt-4">
-        <a href="shop.php" class="btn btn-sm btn-info mt-0"><i class="fa fa-chevron-left"></i> Continuer l'achat <i class="fa fa-cart-plus"></i></a>
+        <a href="shop" class="btn btn-sm btn-info mt-0"><i class="fa fa-chevron-left"></i> Continuer l'achat <i class="fa fa-cart-plus"></i></a>
       </div>
     </div>
     <div class="row justify-content-center">
@@ -97,7 +98,7 @@
           e.preventDefault();
 
           $.ajax({
-            url:'action.php',
+            url:'action_cart.php',
             type:'post',
             data:$("form").serialize()+"&action=order",
             success:function(response){
@@ -116,7 +117,7 @@
       //Methode pour afficher le nombres des articles dans le panier
       function count_items_in_cart(){
         $.ajax({
-          url:'action.php',
+          url:'action_cart.php',
           type:'get',
           data:{cartItem:"cart_item"},
           success:function(response){

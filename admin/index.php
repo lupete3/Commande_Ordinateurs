@@ -41,7 +41,7 @@
             <center class="">
                 
             <div class="card ">
-              <div class="card-header text-uppercase">CONNEXION</div>
+              <div class="card-header text-uppercase">CONNEXION </div>
               <form action="model/connect_users.php" method="POST" class="">
                 <div class="card-body">
                   <div class="form-group">

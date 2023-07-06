@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 04 sep. 2022 à 23:42
+-- Généré le : mer. 21 sep. 2022 à 16:59
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -43,11 +43,31 @@ CREATE TABLE `approv` (
 --
 
 INSERT INTO `approv` (`id`, `quantite`, `prix`, `date_approv`, `nom_four`, `id_prod`) VALUES
-(1, 20, '200', '2022-06-04', 'Claude', 1),
-(2, 5, '180', '2022-06-04', 'Muhamed', 2),
-(4, 7, '200', '2022-06-05', 'Paul', 3),
-(6, 12, '150', '2022-07-07', 'HOPO', 4),
-(7, 2, '20', '2022-08-31', 'MOUJ', 25);
+(2, 2, '1', '2022-09-02', 'HOME', 8),
+(3, 1, '140', '2022-09-04', 'MOUJ', 3),
+(4, 2, '120', '2022-09-04', 'SUPPREME', 9),
+(5, 1, '200', '2022-09-05', 'MOUJ', 14),
+(6, 2, '200', '2022-09-06', 'MOUJ', 14),
+(7, 2, '120', '2022-09-15', 'SUPPREMEE', 8),
+(8, 1, '35', '2022-09-15', 'GAZA', 27),
+(9, 1, '200', '2022-09-17', 'MOUJ', 14),
+(10, 1, '200', '2022-09-17', '', 31),
+(11, 2, '200', '2022-09-17', '', 32),
+(12, 1, '150', '2022-09-17', '', 33),
+(13, 1, '200', '2022-09-17', '', 34),
+(14, 2, '200', '2022-09-17', '', 35),
+(15, 2, '120', '2022-09-17', '', 8),
+(16, 1, '200', '2022-09-17', '', 14),
+(17, 1, '100', '2022-09-18', '', 36),
+(18, 1, '200', '2022-09-18', '', 31),
+(19, 3, '120', '2022-09-19', '', 8),
+(20, 1, '200', '2022-09-20', '', 19),
+(21, 1, '120', '2022-09-20', '', 8),
+(22, 2, '200', '2022-09-20', '', 32),
+(23, 2, '200', '2022-09-20', '', 14),
+(24, 2, '200', '2022-09-20', '', 34),
+(25, 1, '180', '2022-09-20', '', 5),
+(26, 1, '200', '2022-09-21', '', 43);
 
 -- --------------------------------------------------------
 
@@ -102,10 +122,14 @@ CREATE TABLE `cart` (
 INSERT INTO `cart` (`id`, `nom_produit`, `prix_produit`, `qte_produit`, `img_produit`, `prix_tot`, `id_produit`, `etat`, `ip`) VALUES
 (30, 'Elite Book x 360', '70', 1, '925793215.jfif', '70', 9, 1, '192.168.133.142'),
 (31, 'HP Elite Book 1', '255', 1, '1542995302.jfif', '255', 1, 1, '192.168.133.142'),
+(44, 'LENOVO', '250', 1, '396471227.jfif', '250', 4, 1, '::1'),
+(45, 'TOSHIBA', '200', 1, '493441676.jfif', '200', 5, 1, '::1'),
 (47, 'Test7', '20', 1, '1833565973.jfif', '20', 16, 1, '192.168.48.142'),
 (48, 'Test prod', '9', 1, '1875874516.jfif', '9', 22, 1, '192.168.48.142'),
 (49, 'LENOVO', '250', 1, '396471227.jfif', '250', 4, 1, '192.168.48.63'),
-(50, 'LENOVO', '250', 1, '396471227.jfif', '250', 4, 0, '192.168.48.142');
+(50, 'LENOVO', '250', 1, '396471227.jfif', '250', 4, 1, '192.168.48.142'),
+(51, 'Lecteur pour disques', '10', 1, '1336675117.jpg', '10', 24, 1, '::1'),
+(52, 'DE V131', '30', 1, '117372897.jpg', '30', 15, 1, '::1');
 
 -- --------------------------------------------------------
 
@@ -124,13 +148,12 @@ CREATE TABLE `categorie` (
 --
 
 INSERT INTO `categorie` (`id`, `libelle`, `detail`) VALUES
-(1, 'TOSHIBA', 'Toshiba'),
-(2, 'HP', 'HP détail'),
-(3, 'LENOVO', 'Detail Lenovo'),
-(6, 'ACER', 'Détail Acer'),
-(7, 'MAC', 'Détail Mac'),
-(11, 'DELL', 'Dell Pro'),
-(17, 'CLAVIER', 'CLAVIER');
+(12, 'ORDINATEURS PORTABLES', 'Computers'),
+(13, 'BATTERIE', 'Batterie pour laptop'),
+(15, 'ACCESSOIRES', 'Accessoires'),
+(16, 'TELEPHONE', 'Smart Phone'),
+(17, 'TABLETTE', 'Téléphones tablettes'),
+(18, 'Services', 'Des services qu\'offre l\'Ets a part la vente');
 
 -- --------------------------------------------------------
 
@@ -162,7 +185,8 @@ CREATE TABLE `client` (
 INSERT INTO `client` (`id`, `nom_client`, `email_client`, `telephone_client`, `avenue`, `quartier`, `commune`, `ville`, `province`, `pays`, `code_postal`, `avatar`, `password`, `date_enreg`) VALUES
 (3, 'Antoine Bulyalugo', NULL, '0999999999', 'Collège Alfajiri', 'Nyalukemba', 'Ibanda', 'Bukavu', NULL, NULL, NULL, NULL, '$2y$10$H3WNwf4RuOzXrxqwWk3KIeCslqhOpKAcKNbTT8S5ZwC8Y5wUC0Qoa', '2022-06-11 22:15:50'),
 (4, 'Matat Mponyo', NULL, '0888888888', 'Kimengele', 'Mosala', 'Gombe', 'Kinshasa', NULL, NULL, NULL, NULL, '$2y$10$O.2PR9fpkIfyFUw5nIWW3O8PD8dWD0zwSdxlZQdsWgtr0KQr8RH0O', '2022-07-07 16:10:43'),
-(5, 'Marceline Bossa', NULL, '0777777777', 'Majeno', 'Goma', 'Goma', 'Goma', NULL, NULL, NULL, NULL, '$2y$10$XZcQ/NDIXUe1RRVAtOSReuxTDKy6zT.O8ox3rPrJt91By0RS05vPq', '2022-07-07 16:12:25');
+(5, 'Marceline Bossa', NULL, '0777777777', 'Majeno', 'Goma', 'Goma', 'Goma', NULL, NULL, NULL, NULL, '$2y$10$XZcQ/NDIXUe1RRVAtOSReuxTDKy6zT.O8ox3rPrJt91By0RS05vPq', '2022-07-07 16:12:25'),
+(6, 'JOSEPHAT', NULL, '987945795789', 'MATONGE', 'NDENDERE', 'IBANDA', 'BUKAVU', NULL, NULL, NULL, NULL, '$2y$10$lVfePYWKPDtiiczKAxyEu.QIkxvOLviu2s8zbcqiSDpqgzs6WgAIW', '2022-09-06 08:27:14');
 
 -- --------------------------------------------------------
 
@@ -193,6 +217,29 @@ INSERT INTO `contact` (`id`, `nom`, `postnom`, `email`, `objet`, `message`, `dat
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `creance`
+--
+
+CREATE TABLE `creance` (
+  `id` int(11) NOT NULL,
+  `nom_complet` varchar(255) NOT NULL,
+  `montant` double NOT NULL,
+  `date_credit` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date_paye_estim` date NOT NULL,
+  `observation` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `creance`
+--
+
+INSERT INTO `creance` (`id`, `nom_complet`, `montant`, `date_credit`, `date_paye_estim`, `observation`) VALUES
+(1, 'Antoine Bulyalugo', 10, '2022-09-19 23:15:57', '2022-09-30', ' Dette Souris Dell'),
+(2, 'Placide', 90, '2022-09-19 23:16:34', '2022-10-09', ' test app');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `entree_stock_maison`
 --
 
@@ -210,9 +257,19 @@ CREATE TABLE `entree_stock_maison` (
 --
 
 INSERT INTO `entree_stock_maison` (`id`, `qte`, `prix_achat`, `fournisseur`, `date_entree`, `id_produit`) VALUES
-(2, 2, '250', 'Abdul', '2022-07-16 10:11:48', 1),
-(3, 2, '300', 'Molamba', '2022-07-16 10:13:38', 1),
-(4, 5, '150', 'Muhamed', '2022-07-16 10:14:31', 2);
+(1, 11, '200', 'NEW MOUJ', '2022-09-04 11:18:10', 1),
+(2, 7, '140', 'MOUJ', '2022-09-04 11:18:31', 5),
+(3, 4, '150', 'MOUJ', '2022-09-04 11:28:02', 6),
+(4, 5, '150', 'MOUJ', '2022-09-04 11:28:39', 7),
+(5, 2, '100', 'SUPPREME', '2022-09-04 11:29:15', 3),
+(6, 4, '180', 'MOUJ', '2022-09-04 11:32:12', 4),
+(7, 82, '100', 'SUPPREME', '2022-09-04 11:38:28', 2),
+(8, 6, '200', 'NEW MOUJ AL BAHIR', '2022-09-14 09:25:47', 8),
+(10, 1, '250', 'LUKMAN', '2022-09-14 09:28:51', 10),
+(11, 2, '200', 'LUKMAN', '2022-09-14 09:29:15', 11),
+(12, 1, '150', 'LUKMAN', '2022-09-14 09:29:48', 13),
+(13, 4, '200', 'LUKMAN', '2022-09-14 09:30:17', 14),
+(14, 4, '200', 'LUKMAN', '2022-09-14 09:31:01', 15);
 
 -- --------------------------------------------------------
 
@@ -272,7 +329,7 @@ CREATE TABLE `gerant` (
   `telephone` varchar(20) NOT NULL,
   `login` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL
+  `type` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -281,7 +338,7 @@ CREATE TABLE `gerant` (
 
 INSERT INTO `gerant` (`id`, `nom_complet`, `email`, `telephone`, `login`, `password`, `type`) VALUES
 (1, 'Frank', 'admin@ntc.com', '0987654321', 'admin', 'admin', 'Admin'),
-(2, 'Système', 'sys@gmail.com', '09876543221', 'systeme', '1234', 'Gérant');
+(2, 'Sys', 'gerant@ntc.com', '0987654321', 'gerant', 'gerant', 'Gérant');
 
 -- --------------------------------------------------------
 
@@ -327,19 +384,44 @@ CREATE TABLE `produit` (
 --
 
 INSERT INTO `produit` (`id`, `designation`, `description`, `prix`, `quantite`, `disponible`, `image`, `id_cat`, `date_ajout`) VALUES
-(1, 'HP Elite Book 1', '<ul><li>Processeur Core i5</li><li>Capacité 500Go</li><li>Autonomie 5Heures</li><li>Garantie 3 mois </li></ul>', '255', 17, 'Oui', '1542995302.jfif', 1, '2022-05-01'),
-(2, 'ACER', 'Détail du produit', '100', 5, 'Oui', '1411670604.jfif', 1, '2022-05-03'),
-(3, 'DELL', 'Détail du produit 1', '200', 10, 'Oui', '549529855.jfif', 11, '2022-05-09'),
-(4, 'LENOVO', 'Détail du produit', '250', 14, 'Oui', '396471227.jfif', 1, '2022-06-05'),
-(5, 'TOSHIBA', 'Détail du produit', '200', 5, 'Oui', '493441676.jfif', 1, '2022-05-15'),
-(8, 'Test2', 'Détail du produit', '90', 6, 'Oui', '1824961684.jfif', 1, '2022-05-15'),
-(9, 'Elite Book x 360', 'Détail du produit', '70', 2, 'Oui', '925793215.jfif', 2, '2022-05-09'),
-(10, 'Test4', 'Détail du produit', '12', 1, 'Oui', '2126846665.jfif', 1, '2022-05-24'),
-(16, 'Test7', 'Détail du produit', '20', 1, 'Oui', '1833565973.jfif', 1, '2022-06-05'),
-(18, 'Test10', 'Détail du produit', '20', 2, 'Oui', '629140607.jfif', 1, '2022-06-05'),
-(22, 'Test prod', '<b>Produ</b><p>Test</p>', '9', 6, 'Oui', '1875874516.jfif', 7, '2022-06-05'),
-(23, 'Mac Book Ac', 'Mac Dispo', '350', 4, 'Non', '628593696.jfif', 7, '2022-07-07'),
-(25, 'CLAVIER', 'OK', '30', 1, 'Oui', '1313145093.jpg', 17, '2022-08-31');
+(2, 'DELL 3350', '500GB 4RAM ', '150', 2, 'Oui', '1310798991.jpg', 12, '2022-09-02'),
+(3, 'DELL 3150', '500GB 4RAM et double processeur 4h Battery', '150', 0, 'Oui', '1777837918.jpg', 12, '2022-09-02'),
+(4, 'LENOVO E430C', '320GB 4RAM', '180', 1, 'Oui', '346582485.jpg', 12, '2022-09-02'),
+(5, 'LENOVO EDGE', '500GB 4RAM', '180', 2, 'Oui', '1211603079.jpg', 12, '2022-09-02'),
+(6, 'LEN T430s', '1TERA', '300', 1, 'Oui', '1361343686.jpg', 12, '2022-09-02'),
+(7, 'HP PROBOOK', '320GB', '130', 0, 'Oui', '768584190.jpg', 12, '2022-09-02'),
+(8, 'ACER Mini V5', '320GB 4RAM DOUBLE PROCESSEUR 4H', '120', 3, 'Oui', '1754120423.jpg', 12, '2022-09-02'),
+(9, 'ASUS MINI', '320GB 4RAM', '120', 2, 'Oui', '1935694821.jpg', 12, '2022-09-02'),
+(12, 'MacBook Pro', '720GB 4RAM', '300', 1, 'Oui', '1281425084.jpg', 12, '2022-09-02'),
+(14, 'HP 820 g1', '500GB 4RAM i5 CLAVIER LUMINEUX', '250', 2, 'Oui', '522703324.jpg', 12, '2022-09-03'),
+(15, 'DE V131', 'Pour DELL VOSTRO V131, V131R V131D 268X5<p>DELL Vostro Inspirons 13Z</p>', '30', 2, 'Oui', '117372897.jpg', 13, '2022-09-04'),
+(16, 'HP 8440p', 'HSTNN-UB68, HSTNN-144C-BM, HSTNN-W42C-A, W42C-B pour HP8440P&nbsp;', '30', 0, 'Oui', '913711614.jpg', 13, '2022-09-04'),
+(17, 'HP 4530s', 'HSTNN-CB1B,&nbsp; pour HP4530s&nbsp;', '30', 1, 'Oui', '1634638118.jpg', 13, '2022-09-04'),
+(18, 'HP 4230s', 'Pour HP4230s&nbsp;', '30', 1, 'Oui', '230581268.jpg', 13, '2022-09-04'),
+(19, 'HP 2560p', 'Pour HP2560p ', '30', 1, 'Oui', '1990717513.jpg', 13, '2022-09-04'),
+(20, 'AC 765', '', '30', 3, 'Oui', '976631970.jpg', 13, '2022-09-04'),
+(21, 'AC E5', 'Pour ACER', '30', 1, 'Oui', '1068380967.jpg', 13, '2022-09-04'),
+(22, 'TO 3788', 'Pour TOSHIBA', '30', 1, 'Oui', '9224346.jpg', 13, '2022-09-04'),
+(23, 'DE E4300', 'Pour DELL', '30', 2, 'Oui', '1829964347.jpg', 13, '2022-09-04'),
+(24, 'Lecteur pour disques', 'Lecteur pour disque dur surtout pour les HP', '10', 5, 'Oui', '1336675117.jpg', 15, '2022-09-06'),
+(25, 'LOB480LH', 'Batterie pour lenovo E', '30', 0, 'Oui', '1383694440.jpg', 13, '2022-09-14'),
+(26, 'HPP 9470M', 'Batterie pour HP Folio', '50', 1, 'Oui', '1062296548.jpg', 13, '2022-09-14'),
+(27, 'HPP PIO6', 'Batterie pour HPP PI06', '35', 1, 'Oui', '386946531.jpg', 13, '2022-09-14'),
+(28, 'HPP CQ62', 'Pour HP 2000', '30', 1, 'Oui', '151472279.jpg', 13, '2022-09-14'),
+(29, 'HPP HS04', 'Batterie HP Pour HP', '30', 1, 'Oui', '650221730.jpg', 13, '2022-09-14'),
+(30, 'HPP RI04', '', '30', 1, 'Oui', '748645793.jpg', 13, '2022-09-14'),
+(31, 'Lenovo T43ou', 'ok', '200', 1, 'Oui', '2019914145.jpg', 12, '2022-09-17'),
+(32, 'DELL Latitude 3380', 'OK', '200', 2, 'Oui', '2128050580.jpg', 12, '2022-09-17'),
+(33, 'HP streambook', '', '150', 1, 'Oui', '1460379209.jpg', 12, '2022-09-17'),
+(34, 'Toshiba R700', 'OK', '200', 2, 'Oui', '854846078.jpg', 12, '2022-09-17'),
+(35, 'Toshiba Z', '', '200', 1, 'Oui', '1103932104.jpg', 12, '2022-09-17'),
+(36, 'HPmini 1101', 'OK', '100', 1, 'Oui', '1582059749.jpg', 12, '2022-09-18'),
+(37, 'Lenovo tablette m5', 'OK', '250', 1, 'Oui', '670310730.jpg', 12, '2022-09-18'),
+(38, 'iPhone SE 2020', 'ok', '180', 1, 'Oui', '4105067.jpg', 16, '2022-09-18'),
+(39, 'Protection Dell 3150', 'Une protection d\'ecran pour Le laptop', '10', 3, 'Oui', '21806398.jpg', 15, '2022-09-19'),
+(40, 'Clavier sans fil', 'Clavier sans til et pavé numerique', '25', 2, 'Oui', '2009428662.jpg', 15, '2022-09-19'),
+(41, 'clavier iPad', 'Clavier pour ipad', '20', 1, 'Oui', '255612544.jpg', 15, '2022-09-19'),
+(43, 'HP EliteBook 2560p', '500Gb 4ram double processeur i5', '200', 1, 'Oui', '1681095562.jpg', 12, '2022-09-21');
 
 -- --------------------------------------------------------
 
@@ -382,9 +464,25 @@ CREATE TABLE `sortie_stock_maison` (
 --
 
 INSERT INTO `sortie_stock_maison` (`id`, `qte`, `date_sortie`, `id_produit`) VALUES
-(1, 2, '2022-07-22 22:59:57', 1),
-(3, 4, '2022-07-22 23:02:47', 4),
-(5, 2, '2022-08-31 17:16:00', 7);
+(1, 1, '2022-09-04 13:10:09', 5),
+(2, 2, '2022-09-04 13:10:16', 3),
+(3, 1, '2022-09-05 07:29:10', 1),
+(4, 2, '2022-09-06 06:54:50', 1),
+(5, 2, '2022-09-15 07:20:18', 2),
+(6, 2, '2022-09-15 07:20:42', 8),
+(7, 1, '2022-09-15 07:28:01', 13),
+(8, 1, '2022-09-15 07:32:28', 16),
+(9, 2, '2022-09-15 11:41:30', 15),
+(10, 1, '2022-09-15 11:42:22', 14),
+(11, 1, '2022-09-17 07:58:52', 1),
+(12, 1, '2022-09-19 00:36:16', 10),
+(13, 3, '2022-09-19 16:26:37', 2),
+(14, 1, '2022-09-20 14:22:31', 11),
+(15, 1, '2022-09-20 14:24:27', 2),
+(16, 2, '2022-09-20 14:25:13', 8),
+(17, 2, '2022-09-20 14:26:25', 1),
+(18, 2, '2022-09-20 14:27:26', 16),
+(19, 1, '2022-09-20 14:28:51', 7);
 
 -- --------------------------------------------------------
 
@@ -404,11 +502,21 @@ CREATE TABLE `stock_maison` (
 --
 
 INSERT INTO `stock_maison` (`id`, `libelle`, `stock`, `date_entree`) VALUES
-(1, 'Toshiba', 30, '2022-07-16 09:06:35'),
-(2, 'Dell', 12, '2022-07-16 09:10:37'),
-(3, 'Acer', 15, '2022-07-16 09:11:38'),
-(4, 'Hp', 35, '2022-07-16 09:11:45'),
-(7, 'CLAVIER SS', 3, '2022-08-31 17:15:30');
+(1, 'HP 820 g1', 5, '2022-09-02 08:42:51'),
+(2, 'ACER Mini', 76, '2022-09-03 22:45:17'),
+(3, 'ASUS Mini', 0, '2022-09-03 22:45:31'),
+(4, 'DELL LATITUDE 3350', 4, '2022-09-03 22:46:02'),
+(5, 'DELL LATITUDE 3150', 6, '2022-09-03 22:46:18'),
+(6, 'LENOVO E430C', 4, '2022-09-03 22:46:57'),
+(7, 'LENOVO EDGE', 4, '2022-09-03 22:47:30'),
+(8, 'DELL Latitude 3380 i3', 2, '2022-09-14 08:35:45'),
+(10, 'LENOVO MT m-5 Tablette', 0, '2022-09-14 08:51:18'),
+(11, 'HP2560p i5', 1, '2022-09-14 09:13:36'),
+(12, 'HP2560p i7', 0, '2022-09-14 09:14:00'),
+(13, 'STREMBOOK', 0, '2022-09-14 09:14:19'),
+(14, 'LENOVO T430u', 3, '2022-09-14 09:22:56'),
+(15, 'TOSHIBA ZBOOK i5', 2, '2022-09-14 09:23:39'),
+(16, 'TOSHIBA R700 i3', 10, '2022-09-15 07:31:08');
 
 -- --------------------------------------------------------
 
@@ -484,19 +592,7 @@ CREATE TABLE `vente` (
 --
 
 INSERT INTO `vente` (`id`, `nom`, `email`, `phone`, `paye_mode`, `produits`, `prix_total`, `adresse`, `date_vente`, `livraison`, `num_transaction`, `id_cli`, `remise`) VALUES
-(1, 'Lupete Placide', 'placide@gmail.com', '0987654321', 'Livraison', 'HP Elite Book 1(3), ACER(1), LENOVO(1)', '1115', 'Feu rouge, Q. Ndendere, C.Ibanda', '2022-06-06 11:33:24', 'accepte', '', 3, '10'),
-(2, 'Mbale Deo', 'deo@gmail.com', '0989878787', 'Livraison', 'HP Elite Book 1(3), ACER(1), LENOVO(1)', '1115', 'Labotte/Fond social', '2022-06-07 11:35:32', 'livre', '', 3, '5'),
-(3, 'Furaha bertille', 'furaha@gmail.com', '0989127890', 'Mobile Money', 'HP Elite Book 1(3), ACER(1), LENOVO(1)', '1115', 'Uvira/Kasenga', '2022-06-07 11:44:32', 'encours', '', 3, '20'),
-(4, 'Riziki Justine', 'riziki@gmail.com', '0981290837', 'Livraison', 'HP Elite Book 1(3), ACER(1), LENOVO(1)', '1115', 'Bukavu, Av Saio N°10', '2022-06-07 11:45:59', 'accepte', '', 3, '0'),
-(5, 'Adeline Zawadi', 'adeline@gmail.com', '0998901238', 'Mobile Money', 'HP Elite Book 1(1)', '255', 'Uvira Av Kasenga', '2022-06-07 11:56:47', 'encours', '', 3, '0'),
-(6, 'Manyumba Pascaline', 'pascal@gmail.com', '0987812340', 'Mobile Money', 'ACER(1)', '100', 'Kamituga', '2022-06-07 12:07:00', 'annule', '', 3, '0'),
-(7, 'test', 'test@gmail.com', '0987654321', 'Mobile Money', 'ACER(1)', '100', 'adresse de livraison', '2022-06-07 12:15:07', 'encours', '', 3, '0'),
-(8, 'test', 'test@gmail.com', '98765432345', 'Mobile Money', 'ACER(1)', '100', 'adresse de livraison', '2022-06-07 12:54:02', 'annule', '', 3, '0'),
-(9, 'Antoine Bulyalugo', '', '0999999999', 'Mobile Money', 'Elite Book x 360(1), HP Elite Book 1(1), Elite Book x 360(2), TOSHIBA(1), HP Elite Book 1(1)', '920', 'Collège Alfajiri Nyalukemba Ibanda Bukavu', '2022-06-18 13:33:43', 'livre', 'PO909876.2343.P875241', 3, '10'),
-(10, 'Antoine Bulyalugo', 'antoine@gmail.com', '0999999999', 'Mobile Money', 'HP Elite Book 1(1), ACER(1)', '355', 'Collège Alfajiri Nyalukemba Ibanda Bukavu', '2022-06-18 13:45:57', 'annule', NULL, 2, '0'),
-(11, 'Matata Mponyo', '', '0888888888', 'Livraison', 'HP Elite Book 1(1)', '255', 'Kimengele Mosala Gombe Kinshasa', '2022-07-07 16:13:30', 'encours', NULL, 4, '0'),
-(12, 'Antoine Bulyalugo', '', '0999999999', 'Livraison', 'HP Elite Book 1(2), DELL(1)', '710', 'Collège Alfajiri Nyalukemba Ibanda Bukavu', '2022-07-07 17:45:30', 'livre', NULL, 3, '2'),
-(13, 'Antoine Bulyalugo', 'Test@gmail.com ', '0999999999', 'Livraison', 'LENOVO(1), TOSHIBA(1), Test7(1), Test prod(1), LENOVO(1)', '729', 'Collège Alfajiri Nyalukemba Ibanda Bukavu', '2022-08-01 16:20:51', 'livre', NULL, 3, '1');
+(1, 'JOSEPHAT', '', '987945795789', 'Livraison', 'LENOVO(1), Lecteur pour disques(1), DE V131(1)', '290', 'MATONGE NDENDERE IBANDA BUKAVU', '2022-09-06 08:28:22', 'livre', NULL, 6, '0');
 
 -- --------------------------------------------------------
 
@@ -518,12 +614,35 @@ CREATE TABLE `vente_admin` (
 --
 
 INSERT INTO `vente_admin` (`id`, `quantite`, `prix`, `date_vente`, `id_prod`, `client`) VALUES
-(4, 2, '240', '2022-06-24', 4, 'Antoine'),
-(5, 3, '300', '2022-07-03', 1, 'Blaise'),
-(6, 2, '150', '2022-07-07', 22, 'Placide'),
-(7, 2, '150', '2022-07-07', 4, 'Client'),
-(8, 1, '30', '2022-08-31', 25, 'Client'),
-(10, 2, '200', '2022-08-31', 4, 'Serge');
+(1, 1, '115', '2022-09-02', 8, 'CHRISTIAN'),
+(2, 1, '140', '2022-09-02', 3, 'AMANI BASHONGA'),
+(3, 1, '145', '2022-09-04', 3, 'X'),
+(4, 1, '190', '2022-09-06', 14, 'SERGE GADAS'),
+(5, 1, '190', '2022-09-06', 14, 'SEBASTIEN'),
+(7, 1, '180', '2022-09-15', 2, 'BOSCO'),
+(8, 1, '115', '2022-09-15', 8, 'AUDRY'),
+(9, 1, '100', '2022-09-15', 8, 'CHRISTIAN BARH'),
+(10, 1, '160', '2022-09-15', 5, 'X'),
+(11, 2, '10', '2022-09-15', 24, 'FISTON'),
+(12, 1, '30', '2022-09-15', 27, 'JULIENNE'),
+(13, 1, '120', '2022-09-15', 8, 'X'),
+(14, 1, '25', '2022-09-16', 25, 'OXO'),
+(15, 1, '180', '2022-09-16', 14, 'RAIS M'),
+(16, 1, '110', '2022-09-18', 9, 'HONORE KQUPI'),
+(17, 1, '200', '2022-09-18', 32, 'KYANGA M'),
+(18, 1, '180', '2022-09-18', 14, 'RAIS M'),
+(19, 1, '215', '2022-09-18', 31, 'ROSINE'),
+(20, 3, '300', '2022-09-18', 8, 'X'),
+(21, 1, '115', '2022-09-18', 7, 'ELONGA'),
+(22, 1, '110', '2022-09-19', 8, 'ALPHA'),
+(23, 1, '100', '2022-09-19', 8, 'AMISI'),
+(24, 1, '200', '2022-09-19', 14, 'David GADAS'),
+(25, 1, '100', '2022-09-20', 8, 'ROBERT'),
+(26, 1, '200', '2022-09-20', 16, 'LUCAS'),
+(27, 1, '200', '2022-09-20', 14, 'LUCAS BASHENGEZI'),
+(28, 1, '135', '2022-09-21', 3, 'Lushinga'),
+(29, 1, '190', '2022-09-21', 35, 'LEBON'),
+(30, 1, '140', '2022-09-21', 3, 'AHADI');
 
 --
 -- Index pour les tables déchargées
@@ -565,6 +684,12 @@ ALTER TABLE `client`
 -- Index pour la table `contact`
 --
 ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `creance`
+--
+ALTER TABLE `creance`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -662,7 +787,7 @@ ALTER TABLE `vente_admin`
 -- AUTO_INCREMENT pour la table `approv`
 --
 ALTER TABLE `approv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT pour la table `blog`
@@ -674,19 +799,19 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT pour la table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT pour la table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `contact`
@@ -695,10 +820,16 @@ ALTER TABLE `contact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT pour la table `creance`
+--
+ALTER TABLE `creance`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT pour la table `entree_stock_maison`
 --
 ALTER TABLE `entree_stock_maison`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pour la table `entreprise`
@@ -716,7 +847,7 @@ ALTER TABLE `favoris`
 -- AUTO_INCREMENT pour la table `gerant`
 --
 ALTER TABLE `gerant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `panier`
@@ -728,7 +859,7 @@ ALTER TABLE `panier`
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT pour la table `publicite`
@@ -740,13 +871,13 @@ ALTER TABLE `publicite`
 -- AUTO_INCREMENT pour la table `sortie_stock_maison`
 --
 ALTER TABLE `sortie_stock_maison`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT pour la table `stock_maison`
 --
 ALTER TABLE `stock_maison`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT pour la table `subscriber`
@@ -764,13 +895,13 @@ ALTER TABLE `temoignage`
 -- AUTO_INCREMENT pour la table `vente`
 --
 ALTER TABLE `vente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `vente_admin`
 --
 ALTER TABLE `vente_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Contraintes pour les tables déchargées
@@ -792,14 +923,13 @@ ALTER TABLE `blog`
 -- Contraintes pour la table `entree_stock_maison`
 --
 ALTER TABLE `entree_stock_maison`
-  ADD CONSTRAINT `entree_stock_maison_ibfk_1` FOREIGN KEY (`id_produit`) REFERENCES `stock_maison` (`id`);
+  ADD CONSTRAINT `entree_stock_maison_ibfk_1` FOREIGN KEY (`id_produit`) REFERENCES `stock_maison` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `favoris`
 --
 ALTER TABLE `favoris`
-  ADD CONSTRAINT `favoris_ibfk_1` FOREIGN KEY (`id_cli`) REFERENCES `client` (`id`),
-  ADD CONSTRAINT `favoris_ibfk_2` FOREIGN KEY (`id_pro`) REFERENCES `produit` (`id`);
+  ADD CONSTRAINT `favoris_ibfk_1` FOREIGN KEY (`id_cli`) REFERENCES `client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `panier`
@@ -812,7 +942,7 @@ ALTER TABLE `panier`
 -- Contraintes pour la table `produit`
 --
 ALTER TABLE `produit`
-  ADD CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`id_cat`) REFERENCES `categorie` (`id`);
+  ADD CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`id_cat`) REFERENCES `categorie` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `sortie_stock_maison`

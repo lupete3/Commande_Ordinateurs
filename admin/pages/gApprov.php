@@ -1,5 +1,5 @@
 <?php 
-  $title = 'Gestion Produits';
+  $title = 'Gestion Approvisionnement';
   require_once('include/headerAdmin.php'); 
 
   $model = new Model;
@@ -12,7 +12,13 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php include('include/sidebarAdmin.php'); ?>
+    <?php 
+                      if ($type_user != 'Admin') {
+                        include('include/sidebarGerant.php');
+                      }else{
+                        include('include/sidebarAdmin.php');;
+                      }
+                     ?>
 
     <div id="content-wrapper">
 
@@ -21,9 +27,15 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="admin.php">Tableau de Bord</a>
+            <?php 
+                      if ($type_user != 'Admin') {
+                        echo '<a href="gerant.php">Tableau de Bord</a>';
+                      }else{
+                        echo '<a href="admin.php">Tableau de Bord</a>';
+                      }
+                     ?>
           </li>
-          <li class="breadcrumb-item active">Ajouter une catégorie</li>
+          <li class="breadcrumb-item active">GESTION APPROVISIONNEMENT SHOP</li>
         </ol>
         <div class="row">
           <div class="col-md-4">
@@ -31,7 +43,7 @@
        
         <!-- DataTables Example -->
             <div class="card ">
-              <div class="card-header text-uppercase">Approvisionnement</div>
+              <div class="card-header text-uppercase">ENTREE STOCK SHOP</div>
                 <div class="card-body">
                   <div class="form-group">
                     <div class="form-row">
@@ -51,8 +63,8 @@
                           <option value="<?php echo $row['id']?>"><?php echo $row['designation'].' ==> '.$row['quantite']?></option>
                             <?php }} ?>
                          </select><br>
-                        <input type="text" id="qte" name="qte" class="form-control" placeholder="Quantité Achetée"  autocomplete="off"><br>
-                        <input type="text" id="prix" name="prix" class="form-control" placeholder="Prix Achat"  autocomplete="off"><br>
+                        <input type="text" id="qte" name="qte" class="form-control" placeholder="Quantité"  autocomplete="off"><br>
+                        <input type="text" id="prix" name="prix" class="form-control" placeholder="Prix"  autocomplete="off"><br>
                         <input type="text" id="fournisseur" name="fournisseur" class="form-control" placeholder="Noms Fournisseur"  autocomplete="off"><br>
                       </div>
                       <div class="col-md-12">
@@ -83,7 +95,13 @@
                       <th>Quantité Achetée</th>
                       <th>Date Approv</th>
                       <th>Nom Fournisseur</th>
-                      <th>Action</th>
+                      <?php 
+                      if ($type_user != 'Admin') {
+                        # code...
+                      }else{
+                        echo "<th>Action</th>";
+                      }
+                     ?>
                     </tr>
                   </thead>
                   

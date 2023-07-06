@@ -14,11 +14,11 @@
     $all_ventes = $model->getSingleVentesClient($id,$idVente);
     $entreprise_info = $model->getEntrepriseInfo();
   }else{
-    header('Location:shop.php');
+    header('Location:shop');
   }
   
   if (empty($id) && $type != "Client") {
-    header('Location:index.php');
+    header('Location:index');
   }else
 
 ?>
@@ -75,8 +75,8 @@
             </div>
             <div class="col-md-5 cache">
               <ul class="breadcrumb d-flex justify-content-end ">
-                <li class="breadcrumb-item"><a href="client_espace.php">Accueil</a></li>
-                <li class="breadcrumb-item "><a href="client_espace.php">Mes Commandes</a></li>
+                <li class="breadcrumb-item"><a href="client_espace">Accueil</a></li>
+                <li class="breadcrumb-item "><a href="client_espace">Mes Commandes</a></li>
                 <li class="breadcrumb-item active">Commande # <?= $idCom ?></li>
               </ul>
             </div>
@@ -96,8 +96,8 @@
                   <ul class="nav nav-pills flex-column text-sm">
                     <li class="nav-item"><a href="customer-orders.html" class="nav-link active"><i class="fa fa-list"></i> Mes Commandes</a></li>
                     <li class="nav-item"><a href="customer-account.html" class="nav-link"><i class="fa fa-user"></i> My account</a></li>
-                    <li class="nav-item"><a href="customer-wishlist.html" class="nav-link"><i class="fa fa-heart"></i> Mes Produits Préferés</a></li>
-                    <li class="nav-item"><a href="deconnexion.php" class="nav-link"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
+                    <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-heart"></i> Mes Produits Préferés</a></li>
+                    <li class="nav-item"><a href="deconnexion" class="nav-link"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
                   </ul>
                 </div>
               </div>

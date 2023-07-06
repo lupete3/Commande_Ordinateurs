@@ -2,6 +2,7 @@
   $title = 'Gestion Ventes Produits';
   require_once('include/headerAdmin.php'); 
 
+
   $model = new Model;
 
   $list_product = $model->getAllProductAdmin();
@@ -12,7 +13,13 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php include('include/sidebarAdmin.php'); ?>
+    <?php 
+      if ($type_user != 'Admin') {
+        include('include/sidebarGerant.php');
+      }else{
+        include('include/sidebarAdmin.php');;
+      }
+    ?>
 
     <div id="content-wrapper">
 
@@ -21,7 +28,14 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="admin.php">Tableau de Bord</a>
+            <?php 
+              if ($type_user != 'Admin') {
+                echo '<a href="gerant.php">Tableau de Bord</a>';
+              }else{
+                echo '<a href="admin.php">Tableau de Bord</a>';
+              }
+            ?>
+
           </li>
           <li class="breadcrumb-item active">Effectuer une vente</li>
         </ol>
@@ -73,6 +87,7 @@
               </div>
             </div>
             <div class="card-body">
+              <?php echo $type_user ?>
               <div class="table-responsive">
                 <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
                   <thead>

@@ -20,7 +20,7 @@ $model = new Model;
             </div>
             <div class="col-md-5">
               <ul class="breadcrumb d-flex justify-content-end">
-                <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="index">Accueil</a></li>
                 <li class="breadcrumb-item active">Contact</li>
               </ul>
             </div>
@@ -134,7 +134,7 @@ $model = new Model;
       //Methode pour afficher le nombres des articles dans le panier
       function count_items_in_cart(){
         $.ajax({
-          url:'action.php',
+          url:'action_cart.php',
           type:'get',
           data:{cartItem:"cart_item"},
           success:function(response){
@@ -158,7 +158,7 @@ $model = new Model;
           var action = 'send_conatct';
 
           $.ajax({
-            url: 'action.php',
+            url: 'action_cart.php',
             type: 'post',
             data: {nom:nom,postnom:postnom,email:email,objet:objet,message:message,action:action},
             success: function(response){

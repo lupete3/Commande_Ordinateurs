@@ -6,9 +6,10 @@
 
   // Importation de la classe Model
   include_once('admin/model/Model.php');
+  include_once('panier.php');
 
   $model = new Model;
-  $all_product = $model->getItems($ip);
+  $all_product = obtenirContenuPanier();
 
   $item_count = $model->getItemCount($ip);
 
@@ -27,10 +28,10 @@
               <ul class="breadcrumb d-flex justify-content-end">
                 <?php echo ((!empty($username))?
                 '
-                  <li class="breadcrumb-item"><a href="client_espace.php">Mon Espace</a></li>
+                  <li class="breadcrumb-item"><a href="client_espace">Mon Espace</a></li>
                 ':
                 '
-                  <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
+                  <li class="breadcrumb-item"><a href="index">Accueil</a></li>
                 '); ?>
                 <li class="breadcrumb-item active">Votre Panier</li>
               </ul>
@@ -54,7 +55,7 @@
             </div>
             <div id="basket" class="col-lg-9">
               <div class="box mt-0 pb-0 no-horizontal-padding">
-                <form method="get" action="shop-checkout1.html">
+                <form method="get" action="">
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
@@ -65,7 +66,7 @@
                           <th>Prix</th>
                           <th >Total</th>
 
-                          <th><a href="action.php?clear" class="btn btn-danger btn-sm " onclick="return confirm('Voulez-vous vider ce panier ? ')"><i class="fa fa-trash-o text-white"></i> Vider</a></th>
+                          <th><a href="action_cart?clear" class="btn btn-danger btn-sm " onclick="return confirm('Voulez-vous vider ce panier ? ')"><i class="fa fa-trash-o text-white"></i> Vider</a></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -73,26 +74,26 @@
                           $total =0;  
 
                           if ($all_product > 0) {
-                            foreach($all_product as $res):
+                            foreach($all_product as $index => $res):
                           
                         ?>
                         <tr>
-                          <td><a href="#"><img src="img/<?= $res['img_produit'];?>" alt="White Blouse Armani" class="img-fluid"></a></td>
-                          <td colspan="2"><a href="shop-detail.php?p=<?= $res['id_produit'];?>"><?= $res['nom_produit'];?></a>
-                            <input type="hidden" class="id_product" value="<?php echo $res['id'] ?>" name="">
+                          <td><a href="#"><img src="img/<?= $res['image'];?>" alt="White Blouse Armani" class="img-fluid"></a></td>
+                          <td colspan="2"><a href="shop-detail?p=<?= $res['id'];?>"><?= $res['designation'];?></a>
+                            <input type="hidden" class="id_product" value="<?php echo $index ?>" name="">
                           </td>
                           <td></td>
 
                           <td>
-                            <input type="number" min="1" value="<?= $res['qte_produit'];?>" class="form-control itmQt">
+                            <input type="number" min="1" value="<?= $res['qte'];?>" class="form-control itmQt">
                           </td>
-                          <td><?= number_format($res['prix_produit'],2);?> $
-                            <input type="hidden" class="prix_produit" value="<?php echo $res['prix_produit'] ?>" name="">
+                          <td><?= number_format($res['prix'],2);?> $
+                            <input type="hidden" class="prix_produit" value="<?php echo $res['prix'] ?>" name="">
                           </td>
-                          <td ><?= number_format($res['prix_tot'],2);?> $</td>
-                          <td><a href="action.php?remove=<?= $res['id'] ?>" onclick="return confirm('Voulez-vous supprimer cet article de votre panier ? ')"><i class="fa fa-trash-o text-danger"></i></a></td>
+                          <td ><?= number_format($res['tot'],2);?> $</td>
+                          <td><a href="action_cart?remove=<?= $index ?>" onclick="return confirm('Voulez-vous supprimer cet article de votre panier ? ')"><i class="fa fa-trash-o text-danger"></i></a></td>
                         </tr>
-                        <?php  $total += $res['prix_tot'];  ?>
+                        <?php  $total += $res['tot'];  ?>
                       <?php endforeach; } ?>
                         
                       </tbody>
@@ -105,7 +106,7 @@
                     </table>
                   </div>
                   <div class="box-footer d-flex justify-content-between align-items-center">
-                    <div class="left-col"><a href="shop.php" class="btn btn-info mt-0"><i class="fa fa-chevron-left"></i> Continuer l'achat <i class="fa fa-cart-plus"></i></a></div>
+                    <div class="left-col"><a href="shop" class="btn btn-info mt-0"><i class="fa fa-chevron-left"></i> Continuer l'achat <i class="fa fa-cart-plus"></i></a></div>
                     <div class="right-col">
                       <button class="btn btn-secondary"><i class="fa fa-refresh"></i> Actualiser le panier</button>
                       <button type="button" value="<?php echo $id ?>"  class="btn btn-primary testLog <?php echo (($total > 0 && !empty($id))?'':'disabled'); ?>" title=""><i class="fa fa-credit-card"></i> Proceder au paiement <i class="fa fa-chevron-right"></i></button>
@@ -124,9 +125,9 @@
                     foreach($other_products as $row): ?>
                       <div class="col-lg-3 col-md-6">
                         <div class="product">
-                          <div class="image"><a href="shop-detail.php?p=<?= $row['id']?>"><img src="img/<?= $row['image']?>" alt="" class="img-fluid image1"></a></div>
+                          <div class="image"><a href="shop-detail?p=<?= $row['id']?>"><img src="img/<?= $row['image']?>" alt="" class="img-fluid image1"></a></div>
                           <div class="text">
-                            <h3 class="h5"><a href="shop-detail.php?p=<?= $row['id']?>"><?= $row['designation']?></a></h3>
+                            <h3 class="h5"><a href="shop-detail?p=<?= $row['id']?>"><?= $row['designation']?></a></h3>
                             <p class="price"><?= $row['prix']?> $</p>
                           </div>
                         </div>
@@ -195,7 +196,7 @@
           var image = $form.find(".image").val();
 
           $.ajax({
-            url: 'action.php',
+            url: 'action_cart.php',
             type: 'post',
             data: {id:id,designation:designation,prix:prix,image:image,},
             success: function(response){
@@ -213,7 +214,7 @@
       //Methode pour afficher le nombres des articles dans le panier
       function count_items_in_cart(){
         $.ajax({
-          url:'action.php',
+          url:'action_cart.php',
           type:'get',
           data:{cartItem:"cart_item"},
           success:function(response){
@@ -234,11 +235,12 @@
         console.log(qte);
 
         $.ajax({
-          url:'action.php',
+          url:'action_cart.php',
           type:'post',
           cache:false,
           data:{id_produit:id_produit,prix_produit:prix_produit,qte:qte},
           success:function(response){
+            $(".cart-item").html(response);
             location.reload(true);
             console.log(response);
           }
@@ -253,7 +255,7 @@
 
         if ($session.length > 0) {
 
-          window.location.href="checkout.php";
+          window.location.href="checkout";
 
         }else{
           alert("Vous devez d'abord fournir quelques information pour la livraison s'il vous plait !");

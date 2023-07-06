@@ -23,8 +23,8 @@ $all_blog = $model->getBlog($debut = 0, $fin = 100);
             </div>
             <div class="col-md-5">
               <ul class="breadcrumb d-flex justify-content-end">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">Blog Listing: Small</li>
+                <li class="breadcrumb-item"><a href="index">Accueil</a></li>
+                <li class="breadcrumb-item active">Liste de nos articles</li>
               </ul>
             </div>
           </div>
@@ -41,11 +41,11 @@ $all_blog = $model->getBlog($debut = 0, $fin = 100);
                 <div class="col-lg-4 col-md-6">
                   <div class="home-blog-post">
                     <div class="image"><img src="img/<?= $res['image']?>" alt="..." class="img-fluid">
-                      <div class="overlay d-flex align-items-center justify-content-center"><a href="blog_detail.php?a=<?= $res['id']?>" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
+                      <div class="overlay d-flex align-items-center justify-content-center"><a href="blog_detail?a=<?= $res['id']?>" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
                     </div>
                     <div class="text">
-                      <h4><a href="blog_detail.php?a=<?= $res['id']?>"><?= $res['titre']?> </a></h4>
-                      <p class="author-category">By <a href="blog_detail.php?a=<?= $res['id']?>">John Snow</a> in <a href="blog.html">Webdesign</a></p>
+                      <h4><a href="blog_detail?a=<?= $res['id']?>"><?= $res['titre']?> </a></h4>
+                      <p class="author-category">By <a href="blog_detail?a=<?= $res['id']?>">John Snow</a> in <a href="blog.html">Webdesign</a></p>
                       <p class="intro"><?= $res['detail']?></p><a href="blog_detail.php?a=<?= $res['id']?>" class="btn btn-template-outlined">Continuez la lecture</a>
                     </div>
                   </div>
@@ -71,7 +71,7 @@ $all_blog = $model->getBlog($debut = 0, $fin = 100);
       //Methode pour afficher le nombres des articles dans le panier
       function count_items_in_cart(){
         $.ajax({
-          url:'action.php',
+          url:'action_cart.php',
           type:'get',
           data:{cartItem:"cart_item"},
           success:function(response){

@@ -1,5 +1,6 @@
 <?php 
-
+  require_once('../model/security_adm.php'); 
+  
   require_once '../model/Model.php';
 
   $model = new Model;
@@ -14,8 +15,15 @@
         <td><?php echo $res['libelle'] ?></td>
         <td><?php echo $res['detail'] ?></td>
         <td>
-          <a href="" id="editBtn" value="<?php echo $res['id'] ?>" class="btn btn-primary btn-sm " title=""><i class="fa fa-edit"></i></a> 
-          <a href="" id="deleteBtn" value="<?php echo $res['id'] ?>" class="btn btn-danger btn-sm " title=""><i class="fa fa-trash"></i></a> 
+          <a href="" id="editBtn" value="<?php echo $res['id'] ?>" class="btn btn-primary btn-sm " title=""><i class="fa fa-edit"></i></a>
+          <?php 
+          if ($type_user != 'Admin') {
+            # code...
+            }else{  ?> 
+                <a href="" id="deleteBtn" value="<?php echo $res['id'] ?>" class="btn btn-danger btn-sm " title=""><i class="fa fa-trash"></i></a>
+          <?php 
+            }
+          ?> 
         </td>
       </tr>
     <?php  

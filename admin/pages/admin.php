@@ -36,7 +36,7 @@
   $res7 = $req7->fetch();
 
     $title = 'Liste des produits';
-
+    
     require_once('include/headerAdmin.php'); 
 
     $model = new Model;
@@ -55,7 +55,7 @@
     <div id="content-wrapper">
 
       <div class="container-fluid">
-        <p style="font-size: 35px">Bonjour <?php echo $username;?> !</hp>
+        <p style="font-size: 35px">Bonjour <?php echo $username.' '. $nomm;?> !</hp>
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">

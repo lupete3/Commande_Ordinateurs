@@ -1,9 +1,9 @@
-<?php 
+<?php  
 
     $title = 'Images Publicitaires';
 
-    require_once('include/headerAdmin.php'); 
-
+    require_once('include/headerGerant.php');
+     
     $model = new Model;
 
     $list_item = $model->getAllPublicites();
@@ -13,7 +13,13 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php include('include/sidebarAdmin.php'); ?>
+    <?php 
+      if ($type_user != 'Admin') {
+        include('include/sidebarGerant.php');
+      }else{
+        include('include/sidebarAdmin.php');;
+      }
+    ?>
 
     <div id="content-wrapper" class="container-fluid">
 
@@ -26,7 +32,13 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="admin.php">Tableau de bord</a>
+            <?php 
+              if ($type_user != 'Admin') {
+                echo '<a href="gerant.php">Tableau de Bord</a>';
+              }else{
+                echo '<a href="admin.php">Tableau de Bord</a>';
+              }
+            ?>
           </li>
           <li class="breadcrumb-item active">Publicité</li>
         </ol>
@@ -61,7 +73,7 @@
                     <td><?php echo $res['id'] ?></td>
                     <td><?php echo $res['titre'] ?></td>
                     <td><?php echo $res['detail'] ?></td>
-                    <td><img src="../../img/<?php echo $res['image'] ?>" height="30" border="4" alt="">
+                    <td><a target="_blank" href="../../img/<?php echo $res['image'] ?>"><img src="../../img/<?php echo $res['image'] ?>" height="30" border="4" alt=""></a>
                       <input type="hidden" id="path" value="<?php echo $res['image'] ?>" name="">
                      </td>
                     <td>

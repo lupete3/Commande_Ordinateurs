@@ -1,5 +1,4 @@
 <?php 
-
   $index = 'active';
 
   require_once('include/header.php');
@@ -158,7 +157,7 @@
           <div class="icon icon-outlined icon-lg"><i class="fa fa-info"></i></div>
           <h3 class="text-uppercase">Besoin d'un conseil?</h3>
           <p class="lead">Ecrivez-nous directement et nous vous assisterons dépuis chez-vous dans un bref délai.</p>
-          <p class="text-center"><a href="contact.php" class="btn btn-template-outlined-white btn-lg"> Nous contacter</a></p>
+          <p class="text-center"><a href="contact" class="btn btn-template-outlined-white btn-lg"> Nous contacter</a></p>
         </div>
       </section>
       <section class="bg-white bar">
@@ -173,12 +172,12 @@
             <div class="col-lg-3">
               <div class="home-blog-post">
                 <div class="image"><img src="img/<?= $res['image']?>" alt="..." class="img-fluid">
-                  <div class="overlay d-flex align-items-center justify-content-center"><a href="blog_detail.php?a=<?= $res['id']?>" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
+                  <div class="overlay d-flex align-items-center justify-content-center"><a href="blog_detail?a=<?= $res['id']?>" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> En savoir plus</a></div>
                 </div>
                 <div class="text">
-                  <h4><a href="blog_detail.php?a=<?= $res['id']?>"><?= $res['titre']?> </a></h4>
-                  <p class="author-category">By <a href="blog_detail.php?a=<?= $res['id']?>">John Snow</a> in <a href="blog.html">Webdesign</a></p>
-                  <p class="intro"><?= $res['detail']?></p><a href="blog_detail.php?a=<?= $res['id']?>" class="btn btn-template-outlined">Continuez la lecture</a>
+                  <h4><a href="blog_detail?a=<?= $res['id']?>"><?= $res['titre']?> </a></h4>
+                  <p class="author-category">By <a href="blog_detail?a=<?= $res['id']?>">John Snow</a> in <a href="blog.html">Webdesign</a></p>
+                  <p class="intro"><?= $res['detail']?></p><a href="blog_detail?a=<?= $res['id']?>" class="btn btn-template-outlined">Continuez la lecture</a>
                 </div>
               </div>
             </div>
@@ -208,7 +207,7 @@
             <div class="col-lg-8 text-center p-3">
               <h3>Prêt à vous lancer ?</h3>
             </div>
-            <div class="col-lg-4 text-center p-3">   <a href="shop.php" class="btn btn-template-outlined-white">Visiter notre shop maintenant</a></div>
+            <div class="col-lg-4 text-center p-3">   <a href="shop" class="btn btn-template-outlined-white">Visiter notre shop maintenant</a></div>
           </div>
         </div>
       </div>
@@ -222,7 +221,7 @@
       //Methode pour afficher le nombres des articles dans le panier
       function count_items_in_cart(){
         $.ajax({
-          url:'action.php',
+          url:'action_cart.php',
           type:'get',
           data:{cartItem:"cart_item"},
           success:function(response){
@@ -257,7 +256,7 @@
           var image = $form.find(".image").val();
 
           $.ajax({
-            url: 'action.php',
+            url: 'action_cart.php',
             type: 'post',
             data: {id:id,designation:designation,prix:prix,image:image,},
             success: function(response){

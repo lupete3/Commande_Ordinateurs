@@ -72,13 +72,13 @@
       
       <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Compte <i class="fas fa-user-circle fa-fw"></i>
+          Paramètres Compte <i class="fas fa-user-circle fa-fw"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
           
-          <a class="dropdown-item" href="#"><?php echo $username;?></a>
+          <a class="dropdown-item" href="profile">Profile <?php echo $username;?></a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="../model/deconnexion.php" >Déconnexion</a>
+          <a class="dropdown-item" href="../model/deconnexion" >Déconnexion</a>
         </div>
       </li>
       

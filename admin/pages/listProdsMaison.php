@@ -13,10 +13,17 @@
         <td><?php echo $res['id'] ?></td>
         <td><?php echo $res['libelle'] ?></td>
         <td><?php echo $res['stock'] ?></td>
-        <td>
-          <a href="" id="editBtn" value="<?php echo $res['id'] ?>" class="btn btn-primary btn-sm " title=""><i class="fa fa-edit"></i></a> 
-          <a href="" id="deleteBtn" value="<?php echo $res['id'] ?>" class="btn btn-danger btn-sm " title=""><i class="fa fa-trash"></i></a> 
-        </td>
+        <?php 
+          if ($type_user != 'Admin') {
+            # code...
+            }else{  ?>
+              <td>
+                <a href="" id="editBtn" value="<?php echo $res['id'] ?>" class="btn btn-primary btn-sm " title=""><i class="fa fa-edit"></i></a> 
+                <a href="" id="deleteBtn" value="<?php echo $res['id'] ?>" class="btn btn-danger btn-sm " title=""><i class="fa fa-trash"></i></a> 
+              </td>
+              <?php 
+            }
+          ?>
       </tr>
     <?php  
     } 

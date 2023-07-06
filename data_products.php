@@ -40,9 +40,9 @@
       foreach($data_product as $res) : ?>
       <div class="col-lg-4 col-md-6 mb-2">
         <div class="product ">
-          <div class="image"><a href="shop-detail.php=<?= $res['id'] ?>"><img src="img/<?php echo $res['image'] ?>"  alt="" class="img-fluid rounded image1"></a></div>
+          <div class="image"><a href="shop-detail=<?= $res['id'] ?>"><img src="img/<?php echo $res['image'] ?>"  alt="" class="img-fluid rounded image1"></a></div>
             <div class="text">
-              <h3 class="h5" style=" margin-top: -40px;"><a href="shop-detail.html"><?php echo $res['designation'] ?></a></h3>
+              <h3 class="h5" style=" margin-top: -40px;"><a href="shop-detail=<?= $res['id'] ?>"><?php echo $res['designation'] ?></a></h3>
               <p class="price text-danger" style="font-size: 30px; margin-top: -20px;"><b><?php echo number_format($res['prix'],2) ?>$</b></p>
               <form action="" class="form-submit">
                 <input type="hidden" class="id" value="<?= $res['id'] ?>" name="">
@@ -95,9 +95,9 @@
       ?>
       <div class="col-lg-4 col-md-6 mb-2">
         <div class="product ">
-          <div class="image"><a href="shop-detail.php?p=<?= $res['id'] ?>" ><img src="img/<?php echo $res['image'] ?>"  alt="" class="img-fluid rounded image1"></a></div>
+          <div class="image"><a href="shop-detail?p=<?= $res['id'] ?>" ><img src="img/<?php echo $res['image'] ?>"  alt="" class="img-fluid rounded image1"></a></div>
             <div class="text">
-              <h3 class="h5" style=" margin-top: -40px;"><a href="shop-detail.html"><?php echo $res['designation'] ?></a></h3>
+              <h3 class="h5" style=" margin-top: -40px;"><a href="sshop-detail=<?= $res['id'] ?>"><?php echo $res['designation'] ?></a></h3>
               <p class="price text-danger" style="font-size: 30px; margin-top: -20px;"><b><?php echo number_format($res['prix'],2) ?>$</b></p>
               <form action="" class="form-submit">
                 <input type="hidden" class="id" value="<?= $res['id'] ?>" name="">

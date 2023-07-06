@@ -10,7 +10,7 @@ require_once('include/header.php');
 $model = new Model;
 
 if (empty($_GET['a'])) {
-    header('location:index.php');
+    header('location:index');
 }else{
   //Appel des articles de blog 
   $all_blog = $model->getBlog($debut = 0, $fin = 4);
@@ -43,10 +43,10 @@ if (empty($_GET['a'])) {
             <ul class="breadcrumb d-flex justify-content-end">
                 <?php echo ((!empty($username))?
                 '
-                  <li class="breadcrumb-item"><a href="client_espace.php">Mon Espace</a></li>
+                  <li class="breadcrumb-item"><a href="client_espace">Mon Espace</a></li>
                 ':
                 '
-                  <li class="breadcrumb-item"><a href="blog.php">Blog</a></li>
+                  <li class="breadcrumb-item"><a href="blog">Blog</a></li>
                 '); ?>
                 <li class="breadcrumb-item active">Notre Blog</li>
               </ul>
@@ -77,11 +77,11 @@ if (empty($_GET['a'])) {
                     foreach ($all_blog as $res): ?>
                     <div class="home-blog-post">
                         <div class="image"><img src="img/<?= $res['image']?>" alt="..." class="img-fluid">
-                        <div class="overlay d-flex align-items-center justify-content-center"><a href="blog_detail.php?a=<?= $res['id']?>" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Lire Plus</a></div>
+                        <div class="overlay d-flex align-items-center justify-content-center"><a href="blog_detail?a=<?= $res['id']?>" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Lire Plus</a></div>
                         </div>
                         <div class="text">
-                        <h4><a href="blog_detail.php?a=<?= $res['id']?>"><?= $res['titre']?> </a></h4>
-                        <p class="author-category">Par <a href="blog_detail.php?a=<?= $res['id']?>"><?= $res['nom_complet']?></a> dans <a href="blog.php">Astuces</a></p>
+                        <h4><a href="blog_detail?a=<?= $res['id']?>"><?= $res['titre']?> </a></h4>
+                        <p class="author-category">Par <a href="blog_detail?a=<?= $res['id']?>"><?= $res['nom_complet']?></a> dans <a href="blog">Astuces</a></p>
                         </div>
                     </div>
                     <?php endforeach; } ?>
@@ -98,7 +98,7 @@ if (empty($_GET['a'])) {
             <div class="col-lg-8 text-center p-3">
               <h3>Prêt à vous lancer ?</h3>
             </div>
-            <div class="col-lg-4 text-center p-3">  <a href="shop.php" class="btn btn-template-outlined-white">Visitez notre shop maintenant</a></div>
+            <div class="col-lg-4 text-center p-3">  <a href="shop" class="btn btn-template-outlined-white">Visitez notre shop maintenant</a></div>
           </div>
         </div>
       </div>
@@ -115,7 +115,7 @@ if (empty($_GET['a'])) {
       //Methode pour afficher le nombres des articles dans le panier
       function count_items_in_cart(){
         $.ajax({
-          url:'action.php',
+          url:'action_cart.php',
           type:'get',
           data:{cartItem:"cart_item"},
           success:function(response){

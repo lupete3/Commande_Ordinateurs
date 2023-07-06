@@ -28,7 +28,7 @@
           <li class="breadcrumb-item">
             <a href="admin.php">Tableau de bord</a>
           </li>
-          <li class="breadcrumb-item active">Liste des commandes produits</li>
+          <li class="breadcrumb-item active">Liste des commandes produits de clients en cours</li>
         </ol>
         <span class="etat"></span>
         <!-- DataTables Example -->

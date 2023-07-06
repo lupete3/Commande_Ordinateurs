@@ -49,13 +49,13 @@
               <ul class="breadcrumb d-flex justify-content-end">
                 <?php echo ((!empty($username))?
                 '
-                  <li class="breadcrumb-item"><a href="client_espace.php">Mon Espace</a></li>
+                  <li class="breadcrumb-item"><a href="client_espace">Mon Espace</a></li>
                 ':
                 '
-                  <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
+                  <li class="breadcrumb-item"><a href="index">Accueil</a></li>
                 '); ?>
                 
-                <li class="breadcrumb-item"><a href="shop.php">Shop</a></li>
+                <li class="breadcrumb-item"><a href="shop">Shop</a></li>
                 <li class="breadcrumb-item active"><?= $designation ?></li>
               </ul>
             </div>
@@ -134,17 +134,17 @@
                   <div class="row">
                     <?php 
                       if ($other_products > 0) {
-                    foreach($other_products as $row): ?>
-                      <div class="col-lg-4 col-md-8">
-                        <div class="product">
-                          <div class="image"><a href="shop-detail.php?p=<?= $row['id']?>"><img src="img/<?= $row['image']?>" alt="" class="img-fluid image1"></a></div>
-                          <div class="text">
-                            <h3 class="h5"><a href="shop-detail.php?p=<?= $row['id']?>"><?= $row['designation']?></a></h3>
-                            <p class="price"><?= $row['prix']?> $</p>
+                        foreach($other_products as $row): ?>
+                          <div class="col-lg-4 col-md-8">
+                            <div class="product">
+                              <div class="image"><a href="shop-detail?p=<?= $row['id']?>"><img src="img/<?= $row['image']?>" alt="" class="img-fluid image1"></a></div>
+                              <div class="text">
+                                <h3 class="h5"><a href="shop-detail?p=<?= $row['id']?>"><?= $row['designation']?></a></h3>
+                                <p class="price"><?= $row['prix']?> $</p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                    <?php
+                        <?php
                         endforeach;
                       }
                     ?>
@@ -185,7 +185,7 @@
               <div class="panel-heading d-flex align-items-center justify-content-between">
                   <h3 class="h4 panel-title"><?= $entreprise['nom']?></h3>
               </div>
-              <div class="banner"><a href="shop-category.html"><img src="img/New_Center.jpg" alt="sales 2014" class="img-fluid"></a></div>
+              <div class="banner"><a href="#"><img src="img/New_Center.jpg" alt="sales 2014" class="img-fluid"></a></div>
             </div>
           </div>
         </div>
@@ -206,7 +206,7 @@
           var image = $form.find(".image").val();
 
           $.ajax({
-            url: 'action.php',
+            url: 'action_cart.php',
             type: 'post',
             data: {id:id,designation:designation,prix:prix,image:image,},
             success: function(response){
@@ -228,7 +228,7 @@
           var action = 'add_fav';
 
           $.ajax({
-            url: 'action.php',
+            url: 'action_cart.php',
             type: 'post',
             data: {idP:idP,idC:idC,action:action,},
             success: function(response){
@@ -249,7 +249,7 @@
           var action = 'delete_fav';
 
           $.ajax({
-            url: 'action.php',
+            url: 'action_cart.php',
             type: 'post',
             data: {idF:idF,action:action,},
             success: function(response){
@@ -274,7 +274,7 @@
       //Methode pour afficher le nombres des articles dans le panier
       function count_items_in_cart(){
         $.ajax({
-          url:'action.php',
+          url:'action_cart.php',
           type:'get',
           data:{cartItem:"cart_item"},
           success:function(response){

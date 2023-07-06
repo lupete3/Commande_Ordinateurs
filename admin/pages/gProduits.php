@@ -22,7 +22,7 @@
           <li class="breadcrumb-item">
             <a href="admin.php">Tableau de Bord</a>
           </li>
-          <li class="breadcrumb-item active">Ajouter un Produit</li>
+          <li class="breadcrumb-item active">AJOUTER DES PRODUITS AU STOCK SHOP</li>
         </ol>
         <form action="" method="POST" id="form" enctype="multipart/form-data">
         <div class=" col-md-12 text-right" style="margin-bottom: 5px;">

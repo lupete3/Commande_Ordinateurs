@@ -24,10 +24,10 @@
               <ul class="breadcrumb d-flex justify-content-end">
                 <?php echo ((!empty($username))?
                 '
-                  <li class="breadcrumb-item"><a href="client_espace.php">Mon Espace</a></li>
+                  <li class="breadcrumb-item"><a href="client_espace">Mon Espace</a></li>
                 ':
                 '
-                  <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
+                  <li class="breadcrumb-item"><a href="index">Accueil</a></li>
                 '); ?>
                 <li class="breadcrumb-item active">Notre Shop</li>
               </ul>
@@ -69,7 +69,7 @@
               <div class="panel-heading d-flex align-items-center justify-content-between">
                   <h3 class="h4 panel-title"><?= $entreprise['nom']?></h3>
               </div>
-              <div class="banner"><a href="shop-category.html"><img src="img/New_Center.jpg" alt="sales 2014" class="img-fluid"></a></div>
+              <div class="banner"><a href="#"><img src="img/New_Center.jpg" alt="sales 2014" class="img-fluid"></a></div>
             </div>
             <div class="col-md-9">
               <h2 class="text-center text-capitalize" >Produits Populaires</h2>
@@ -96,7 +96,7 @@
 
       //Ajout du produit dans le panier
       $(document).ready(function(){
-        $(document).on("click",".addItemBtn", function(e){
+        $(document).on("click",".addItemBtnn", function(e){
           e.preventDefault();
 
           var $form = $(this).closest(".form-submit");
@@ -118,7 +118,31 @@
 
         });
       });
-  
+
+      $(document).ready(function(){
+        $(document).on("click",".addItemBtn", function(e){
+          e.preventDefault();
+
+          var $form = $(this).closest(".form-submit");
+          var id = $form.find(".id").val();
+          var designation = $form.find(".designation").val();
+          var prix = $form.find(".prix").val();
+          var image = $form.find(".image").val();
+
+          $.ajax({
+            url: 'action_cart.php',
+            type: 'post',
+            data: {id:id,designation:designation,prix:prix,image:image,},
+            success: function(response){
+              $("#message").html(response);
+              window.scrollTo(0,0);
+              count_items_in_cart();
+            }
+          });     
+
+        });
+      });
+
       //Afficher les articles selon le critère de recherche
       $("#btnSearch").click(function(e){
           e.preventDefault();
@@ -165,7 +189,7 @@
       //Methode pour afficher le nombres des articles dans le panier
       function count_items_in_cart(){
         $.ajax({
-          url:'action.php',
+          url:'action_cart.php',
           type:'get',
           data:{cartItem:"cart_item"},
           success:function(response){

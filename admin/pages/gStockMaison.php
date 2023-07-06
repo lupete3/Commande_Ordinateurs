@@ -12,7 +12,13 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php include('include/sidebarAdmin.php'); ?>
+    <?php 
+      if ($type_user != 'Admin') {
+        include('include/sidebarGerant.php');
+      }else{
+        include('include/sidebarAdmin.php');;
+      }
+    ?>
 
     <div id="content-wrapper">
 
@@ -21,13 +27,23 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="admin.php">Tableau de Bord</a>
+            <?php 
+              if ($type_user != 'Admin') {
+                echo '<a href="gerant.php">Tableau de Bord</a>';
+              }else{
+                echo '<a href="admin.php">Tableau de Bord</a>';
+              }
+            ?>
           </li>
-          <li class="breadcrumb-item active">Ajouter un nouveau produit</li>
+          <li class="breadcrumb-item active">AJOUTER UN NOUVEAU PRODUIT SUCCEPTIBLE A ETRE DANS LE STOCK MAISON</li>
         </ol>
         <div class="row">
           <div class="col-md-5">
-            <form action="" id="form" method="POST" enctype="multipart/form-data">
+            <?php 
+              if ($type_user != 'Admin') {
+                # code...
+              }else{  ?>
+                <form action="" id="form" method="POST" enctype="multipart/form-data">
        
         <!-- DataTables Example -->
             <div class="card ">
@@ -52,6 +68,9 @@
                     </div>
                   </div>
                 </form>
+                <?php 
+            }
+          ?>
               </div>
             </div>
           </div>
@@ -71,7 +90,14 @@
                       <th>Id</th>
                       <th>Libellé</th>
                       <th>Description</th>
-                      <th>Action</th>
+                        <?php 
+                        if ($type_user != 'Admin') {
+                          # code...
+                        }else{
+                          echo "<th>Action</th>";
+                        }
+                       ?>
+                       
                     </tr>
                   </thead>
                   

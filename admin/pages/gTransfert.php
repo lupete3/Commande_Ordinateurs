@@ -12,7 +12,13 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php include('include/sidebarAdmin.php'); ?>
+    <?php 
+      if ($type_user != 'Admin') {
+        include('include/sidebarGerant.php');
+      }else{
+        include('include/sidebarAdmin.php');;
+      }
+    ?>
 
     <div id="content-wrapper">
 
@@ -21,7 +27,13 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="admin.php">Tableau de Bord</a>
+            <?php 
+              if ($type_user != 'Admin') {
+                echo '<a href="gerant.php">Tableau de Bord</a>';
+              }else{
+                echo '<a href="admin.php">Tableau de Bord</a>';
+              }
+            ?>
           </li>
           <li class="breadcrumb-item active">Effectuer le transfert vers shop</li>
         </ol>
@@ -78,7 +90,13 @@
                       <th>Id</th>
                       <th>Designation</th>
                       <th>Quantité Transfeérée</th>
-                      <th>Action</th>
+                      <?php 
+                        if ($type_user != 'Admin') {
+                          # code...
+                        }else{
+                          echo "<th>Action</th>";
+                        }
+                       ?>
                     </tr>
                   </thead>
                   

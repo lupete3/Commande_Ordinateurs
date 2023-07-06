@@ -19,80 +19,81 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="gProduits.php"><i class="fas fa-fw fa-plus-circle"></i>Ajouter Produit</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="listProduits.php"><i class="fas fa-fw fa-list"></i> Liste Produits</a>
+          <a class="dropdown-item" href="listProduits"><i class="fas fa-fw fa-list"></i> Liste Produits</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="gApprov.php"><i class="fas fa-fw fa-plus"></i> G. Entrée Stock</a>
+          <a class="dropdown-item" href="gApprov"><i class="fas fa-fw fa-plus"></i> G. Entrée Stock</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="gVente.php"><i class="fa fa-shopping-cart"></i> G. Sortie Stock</a>
+          <a class="dropdown-item" href="gVente"><i class="fa fa-shopping-cart"></i> Ventes</a>
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="admin.php" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="admin" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-laptop"></i>
           <span>Gestion Stock Dépôt</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="gStockMaison.php"><i class="fas fa-fw fa-laptop"></i> Gestion Produits</a>
+          <a class="dropdown-item" href="gStockMaison"><i class="fas fa-fw fa-laptop"></i> G. Produits HOME</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="gApprovStockMaison.php"><i class="fas fa-fw fa-plus-circle"></i> G. Entrée Stock</a>
+          <a class="dropdown-item" href="gApprovStockMaison"><i class="fas fa-fw fa-plus-circle"></i> G. Entrée Stock</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="gTransfert.php"><i class="fa fa-car"></i> Tranférer vers Shop</a>
+          <a class="dropdown-item" href="gTransfert"><i class="fa fa-car"></i> Tranférer vers Shop</a>
         </div>
       </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="gCreance" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-book"></i>
+          <span>Gestion Crédit</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="gCredit"><i class="fas fa-fw fa-book"></i> G. Créance</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+
       <li class="nav-item ">
-        <a class="nav-link" href="gCategories.php">
+        <a class="nav-link" href="gCategories">
           <i class="fas fa-fw fa-folder"></i>
           <span>Catégories Produits</span>
         </a>
       </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="admin.php" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-users"></i>
-          <span>Gestion utilisateurs</span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="gAgents.php"><i class="fas fa-fw fa-plus-circle"></i>Gérer Utilisateurs</a>
-        </div>
-      </li>
-
       
       <li class="nav-item ">
-        <a class="nav-link" href="gBlog.php">
+        <a class="nav-link" href="gBlog">
           <i class="fas fa-fw fa-rss"></i>
           <span>Articles Blog</span>
         </a>
       </li>
       
       <li class="nav-item ">
-        <a class="nav-link" href="listClients.php">
+        <a class="nav-link" href="listClients">
           <i class="fas fa-fw fa-users"></i>
           <span>Liste des clients</span>
         </a>
       </li>
       
       <li class="nav-item ">
-        <a class="nav-link" href="listMessages.php">
+        <a class="nav-link" href="listMessages">
           <i class="fas fa-fw fa-envelope"></i>
           <span>Messages Clients</span>
         </a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="gTemoignage.php">
+        <a class="nav-link" href="gTemoignage">
           <i class="fas fa-fw fa-inbox"></i>
           <span>Témoignages</span>
         </a>
       </li>
       
       <li class="nav-item ">
-        <a class="nav-link" href="publicite.php">
+        <a class="nav-link" href="publicite">
           <i class="fas fa-fw fa-id-card"></i>
           <span>Publicité</span>
         </a>
       </li>
       
       <li class="nav-item ">
-        <a class="nav-link" href="gEntreprise.php">
+        <a class="nav-link" href="gEntreprise">
           <i class="fas fa-fw fa-home"></i>
           <span>Adresse Entreprise</span>
         </a>

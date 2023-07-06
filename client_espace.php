@@ -12,7 +12,7 @@
   $all_ventes = $model->getAllVentesClient($id);
   
   if (empty($id) && $type != "Client") {
-    header('Location:index.php');
+    header('Location:index');
   }else
 
 ?>
@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-5">
               <ul class="breadcrumb d-flex justify-content-end">
-                <li class="breadcrumb-item"><a href="client_espace.php">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="client_espace">Accueil</a></li>
                 <li class="breadcrumb-item active">Mes Commandes</li>
               </ul>
             </div>
@@ -132,7 +132,7 @@
       //Methode pour afficher le nombres des articles dans le panier
       function count_items_in_cart(){
         $.ajax({
-          url:'action.php',
+          url:'action_cart.php',
           type:'get',
           data:{cartItem:"cart_item"},
           success:function(response){

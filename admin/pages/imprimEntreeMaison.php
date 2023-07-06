@@ -25,11 +25,14 @@
       </div>
       <div class="col-md-8  text-center" style="border-bottom: 3px solid">
         <h3>Mson NEW TECHNOLOGY CENTER<br>Chez FRANCK</h3>
-          <p style="font-weight:bold; font-family:Century Gothic; font-size:1em;">Ventes des ordinateurs et autres accessoires informatiques<br> C.Ibanda, Q. Ndendere, Av. Kibombo N°49
+          <p style="font-weight:bold; font-family:Century Gothic; font-size:1em;">Ventes des ordinateurs, accéssoires et services informatiques<br> C.Ibanda, Q. Ndendere, Av. Kibombo N°49
           N° RCCM : CD/BKV/RCCM/20-A-00194<br>
           Téléphone : +243 974 473 790<br>
           Newtechnologycenter202@gmail.com
           </p>
+      </div>
+      <div  class="col-md-2">
+        <img src="img/Logo NTC.png" style="width: 100%">
       </div>
       <div class="col-md-12 text-center" >
         <h2 class="text-center">FICHE ENTREE STOCK MAISON</h2>

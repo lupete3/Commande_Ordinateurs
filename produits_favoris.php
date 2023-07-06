@@ -12,7 +12,7 @@
   $all_data = $model->getAllProductFavoris($id);
   
   if (empty($id) && $type != "Client") {
-    header('Location:index.php');
+    header('Location:index');
   }else
 
 ?>
@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-5">
               <ul class="breadcrumb d-flex justify-content-end">
-                <li class="breadcrumb-item"><a href="client_espace.php">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="client_espace">Accueil</a></li>
                 <li class="breadcrumb-item active">Mes Produits Préférés</li>
               </ul>
             </div>
@@ -43,9 +43,9 @@
                   foreach ($all_data as $data) { ?>
                     <div class="col-lg-3 col-md-4">
                       <div class="product">
-                        <div class="image"><a href="shop-detail.php?p=<?= $data['id'] ?>"><img src="img/<?= $data['image'] ?>" alt="" class="img-fluid image1"></a></div>
+                        <div class="image"><a href="shop-detail?p=<?= $data['id'] ?>"><img src="img/<?= $data['image'] ?>" alt="" class="img-fluid image1"></a></div>
                         <div class="text">
-                          <h3 class="h5"><a href="shop-detail.php"><?= $data['designation'] ?></a></h3>
+                          <h3 class="h5"><a href="shop-detail"><?= $data['designation'] ?></a></h3>
                           <p class="price"><?= number_format($data['id'],2) ?> $</p>
                         </div>
                       </div>

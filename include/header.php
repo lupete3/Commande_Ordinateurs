@@ -69,10 +69,10 @@
                 </ul>
                 <?php echo ((!empty($username))?
                 '
-                  <div class="login"><a href="client_espace.php" class="login-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">Compte '.$username.'</span></a><a href="deconnexion.php" class="signup-btn"><i class="fa fa-lock"></i><span class="d-none d-md-inline-block">Déconnexion</span></a></div>
+                  <div class="login"><a href="client_espace" class="login-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">Compte '.$username.'</span></a><a href="deconnexion" class="signup-btn"><i class="fa fa-lock"></i><span class="d-none d-md-inline-block">Déconnexion</span></a></div>
                 ':
                 '
-                <div class="login"><a href="client_register.php" class="login-btn"><i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Se connecter</span></a><a href="client_register.php" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">S\'inscrire</span></a></div>
+                <div class="login"><a href="client_register" class="login-btn"><i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Se connecter</span></a><a href="client_register" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">S\'inscrire</span></a></div>
                 '); ?>
                 <ul class="social-custom list-inline">
                   <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -116,7 +116,7 @@
       <!-- Navbar Start-->
       <header class="nav-holder make-sticky cache">
         <div id="navbar" role="navigation" class="navbar navbar-expand-lg ">
-          <div class="container"><a href="index.php" class="navbar-brand home"><img src="img/<?= $entreprise['logo']?> " height="60" width="187" alt="<?= $entreprise['nom']?>" class="d-none d-md-inline-block"><img src="img/<?= $entreprise['logo']?>" height="50" width="187" alt="<?= $entreprise['nom']?>" class="d-inline-block d-md-none"><span class="sr-only"><?= $entreprise['nom']?></span></a>
+          <div class="container"><a href="" class="navbar-brand home"><img src="img/<?= $entreprise['logo']?> " height="60" width="187" alt="<?= $entreprise['nom']?>" class="d-none d-md-inline-block"><img src="img/<?= $entreprise['logo']?>" height="50" width="187" alt="<?= $entreprise['nom']?>" class="d-inline-block d-md-none"><span class="sr-only"><?= $entreprise['nom']?></span></a>
             <div class="navbar-buttons">
             <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
             <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="cart.php" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i><span class="badge badge-warning badge-pill cart-item" ></span> </span></a>
@@ -125,10 +125,10 @@
             
             <div id="navigation" class="navbar-collapse collapse">
               <ul class="nav navbar-nav ml-auto text-white">
-                <li class="nav-item <?php echo $index ?> "><a href="index.php" class="">Accueil <b class="caret"></b></a></li>
-                <li class="nav-item <?php echo $shop ?>"><a href="shop.php" class="">Shop </a></li>
-                <li class="nav-item <?php echo $blog ?>"><a href="blog.php" class="">Blog </a></li>
-                <li class="nav-item <?php echo $contact ?>"><a href="contact.php" class="">Contact </a></li>
+                <li class="nav-item <?php echo $index ?> "><a href="index" class="">Accueil <b class="caret"></b></a></li>
+                <li class="nav-item <?php echo $shop ?>"><a href="shop" class="">Shop </a></li>
+                <li class="nav-item <?php echo $blog ?>"><a href="blog" class="">Blog </a></li>
+                <li class="nav-item <?php echo $contact ?>"><a href="contact" class="">Contact </a></li>
                 
                 <!-- ========== Contact dropdown end ==================-->
               </ul>

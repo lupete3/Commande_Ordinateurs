@@ -12,7 +12,13 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php include('include/sidebarAdmin.php'); ?>
+    <?php 
+      if ($type_user != 'Admin') {
+        include('include/sidebarGerant.php');
+      }else{
+        include('include/sidebarAdmin.php');;
+      }
+    ?>
 
     <div id="content-wrapper">
 
@@ -21,9 +27,15 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="admin.php">Tableau de Bord</a>
+            <?php 
+              if ($type_user != 'Admin') {
+                echo '<a href="gerant.php">Tableau de Bord</a>';
+              }else{
+                echo '<a href="admin.php">Tableau de Bord</a>';
+              }
+            ?>
           </li>
-          <li class="breadcrumb-item active">Ajouter un témoignage</li>
+          <li class="breadcrumb-item active">Ajouter un produit pour la publicité</li>
         </ol>
         <div class="row">
           <div class="col-md-12">
@@ -31,7 +43,7 @@
        
         <!-- DataTables Example -->
             <div class="card ">
-              <div class="card-header text-uppercase">Ajouter un témoignage <div class="float-right"><button type="submit" name="add_article" id="add_article" class="btn btn-sm btn-success "><i class="fa fa-check-circle"></i> Enregistrer </button></div> </div>
+              <div class="card-header text-uppercase">Ajouter un produit pour la publicité <div class="float-right"><button type="submit" name="add_article" id="add_article" class="btn btn-sm btn-success "><i class="fa fa-check-circle"></i> Enregistrer </button></div> </div>
                 <div class="card-body">
                   <div class="form-group">
                     <div class="form-row">

@@ -1,28 +1,40 @@
 <?php 
 
-include ('connex.php');
-session_start();
+	// include ('connex.php');
+	// Importation de la classe Model
+  	include_once('Model.php');
 
-if(isset($_POST['log_in'])){
-	$user = $_POST['login'];
-	$pwd = $_POST['password'];
+ 	$model = new Model;
 
-	$query1 = $bd->prepare("SELECT * FROM gerant WHERE login = ? AND password = ? ");
-	$query1->execute(array($user, $pwd ));
+	if(isset($_POST['log_in'])){
+		$user = $_POST['login'];
+		$pwd = $_POST['password'];
 
+		if ($admin_exist = $model->adminExists($user)) {
 
-	if ($done=$query1->fetch(PDO::FETCH_ASSOC)) {
+	        foreach($admin_exist as $res):
+	         	if (password_verify($pwd, $res["password"])) {
 
-		$_SESSION['profile']['admin']=$done;
+		            session_start();
+		            $_SESSION['profile']['admin']=$res;
 
-		header('location:../pages/admin.php');
-								
-	}else {
+					$type = $_SESSION['profile']['admin']['type'];
 
-		header('location:../index.php?err=Login ou mot de pass incorrect');
-				  	
+					if($type === "Admin"){
+						header('location:../pages/admin');
+					}else{
+						header('location:../pages/gerant');
+					}
+	            
+	          	}else{
+		            header('location:../index?err=Mot de passe incorrect');
+	          	}
+	        
+	        endforeach;
+	    }else{
+	        header('location:../index?err=Login incorrect');
+	    }
+
 	}
 
-}
-
- ?>
+?>

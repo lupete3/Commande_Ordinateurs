@@ -16,6 +16,105 @@
 	    	}
 	    }
 
+	    // Connexion de l'admin
+		public function adminExists($login){
+
+	    	$data = null;
+
+	      	$query = "SELECT * FROM gerant WHERE login = ? ";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute(array($login));
+
+	      	if($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	      		$data[] = $res;
+
+	        	return $data;
+	      	}else
+
+	      	return false;
+	    	
+		}
+
+	    // Profile l'admin
+		public function profileAdmin($id){
+
+	    	$data = null;
+
+	      	$query = "SELECT * FROM gerant WHERE id = ? ";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute(array($id));
+
+	      	if($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	      		$data[] = $res;
+
+	        	return $data;
+	      	}else
+
+	      	return false;
+	    	
+		}
+
+		//Methode pour modifier le profile de l'administrateur
+		public function editAdmin($nom,$email,$phone,$login,$password,$id){
+
+	    	$query = "UPDATE gerant SET nom_complet = ?,email = ?,telephone = ?,login = ?,password = ? WHERE id = ?";
+	    	$sql = $this->conn->prepare($query);
+
+		    if ($sql->execute(array($nom,$email,$phone,$login,$password,$id))) {          
+		        	
+		        return 1;
+
+		    }else {
+
+		       	return 2;
+		    }
+	    }
+
+	    // Profile client
+		public function profileClient($id){
+
+	    	$data = null;
+
+	      	$query = "SELECT * FROM client WHERE id = ? ";
+
+	      	$sql = $this->conn->prepare($query);
+
+	      	$sql->execute(array($id));
+
+	      	if($res = $sql->fetch(PDO::FETCH_ASSOC)){
+
+	      		$data[] = $res;
+
+	        	return $data;
+	      	}else
+
+	      	return false;
+	    	
+		}
+
+		//Methode pour modifier le profile du client
+		public function editClient($nom,$email,$phone,$avenue,$quartier,$commune,          $ville,$province,$pays,$code,$nouveauPassword,$id){
+		
+	    	$query = "UPDATE client SET nom_client = ?,email_client = ?,telephone_client = ?,avenue = ?,quartier = ?,commune = ?,ville = ?,province = ?,pays = ?,code_postal = ?, password = ? WHERE id = ?";
+	    	$sql = $this->conn->prepare($query);
+
+		    if ($sql->execute(array($nom,$email,$phone,$avenue,$quartier,$commune,          $ville,$province,$pays,$code,$nouveauPassword,$id))) {          
+		        	
+		        return 1;
+
+		    }else {
+
+		       	return 2;
+		    }
+	    }
+
+
 	    //Methode pour tester si le produit n'existe pas encore dans le système
 	    public function produitExists($designation,$prix,$categorie){
 
@@ -46,21 +145,6 @@
 
 	    }
 
-	    //Methode pour tester si la catégorie n'existe pas encore dans le système
-	    public function userExists($nom){
-
-	    	$query = "SELECT * FROM gerant WHERE nom_complet = ? ";
-
-	      	$sql = $this->conn->prepare($query);
-
-	      	$req = $sql->execute(array($nom));
-
-	      	$res = $sql->fetch(PDO::FETCH_ASSOC);
-
-	      	return $res;
-
-	    }
-
 	    //Méthode pour séléctionner toutes les onnées de la table categorie
 	    public function getCategory(){
 
@@ -81,11 +165,11 @@
 	    }
 
 	    //Méthode pour séléctionner toutes les onnées de la table categorie
-	    public function getUsers(){
+	    public function getCreance(){
 
 	    	$data = null;
 
-	      	$query = "SELECT * FROM gerant";
+	      	$query = "SELECT * FROM creance";
 
 	      	$sql = $this->conn->prepare($query);
 
@@ -117,13 +201,12 @@
 
 	      	return $data;
 	    }
-
 	    //Méthode pour séléctionner une seule donnée de la table categorie
-	    public function getUserSingle($id){
+	    public function getCreanceSingle($id){
 
 	    	$data = null;
 
-	      	$query = "SELECT * FROM gerant WHERE id = ?";
+	      	$query = "SELECT * FROM creance WHERE id = ?";
 
 	      	$sql = $this->conn->prepare($query);
 
@@ -469,14 +552,15 @@
 	    	
 		}
 
-	    //Méthode pour ajouter une catégorie dans ala base de données
-	    public function insertUser($nom,$email,$telephone,$login,$password,$type){
 
-	    	$query = "INSERT INTO gerant (nom_complet,email,telephone,login,password,type) VALUES (?,?,?,?,?,?)";
+	    //Méthode pour ajouter une créance dans ala base de données
+	    public function insertCreance($nom,$montant,$date_paye,$detail){
+
+	    	$query = "INSERT INTO creance (nom_complet,montant,date_paye_estim,observation) VALUES (?,?,?,?)";
 
 	        $sql = $this->conn->prepare($query);
 
-	        if ($sql->execute(array($nom,$email,$telephone,$login,$password,$type))) {          
+	        if ($sql->execute(array($nom,$montant,$date_paye,$detail))) {          
 
 	        	return 1;
 
@@ -504,14 +588,16 @@
 	        }
 	    	
 		}
-	    //Méthode pour modifier une catégorie dans ala base de données
-	    public function editUser($nom,$email,$telephone,$login,$password,$id){
 
-	    	$query = "UPDATE gerant SET nom_complet = ?,email = ?,telephone = ?, login = ?, password = ? WHERE id = ?";
+	    //Méthode pour modifier une catégorie dans ala base de données
+	    public function editCreance($nom,$montant,$date_paye,$detail,$id){
+
+	    	$query = "UPDATE creance SET nom_complet = ?,montant = ? , date_paye_estim = ?, observation
+	    	 = ? WHERE id = ?";
 
 	        $sql = $this->conn->prepare($query);
 
-	        if ($sql->execute(array($nom,$email,$telephone,$login,$password,$id))) {          
+	        if ($sql->execute(array($nom,$montant,$date_paye,$detail,$id))) {          
 
 	        	return 1;
 
@@ -541,9 +627,9 @@
 		}
 
 	    //Méthode pour supprimer une catégorie dans ala base de données
-	    public function deleteUser($id){
+	    public function deleteCreance($id){
 
-	    	$query = "DELETE FROM gerant WHERE id = ?";
+	    	$query = "DELETE FROM creance WHERE id = ?";
 
 	        $sql = $this->conn->prepare($query);
 

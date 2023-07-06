@@ -2,6 +2,8 @@
 
   require_once '../model/Model.php';
 
+  require_once '../model/security_adm.php';
+
   $model = new Model;
 
   $list_approv = $model->getApprov();
@@ -16,9 +18,17 @@
         <td><?php echo $res['quantite'] ?></td>
         <td><?php echo $res['date_approv'] ?></td>
         <td><?php echo $res['nom_four'] ?></td>
-        <td>
-          <a href="" id="deleteBtn" value="<?php echo $res['id'] ?>" class="btn btn-danger btn-sm " title=""><i class="fa fa-trash"></i></a>
-        </td>
+        <?php 
+          if ($type_user != 'Admin') {
+            # code...
+           }else{  ?>
+              <td>
+                <a href="" id="deleteBtn" value="<?php echo $res['id'] ?>" class="btn btn-danger btn-sm " title=""><i class="fa fa-trash"></i></a>
+              </td>
+              <?php 
+          }
+        ?>
+        
       </tr>
     <?php  
     } 
